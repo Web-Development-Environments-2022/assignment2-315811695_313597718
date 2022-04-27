@@ -3,9 +3,42 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<link rel="stylesheet" type="text/css" href="Style.css" />
+
+
 	</head>
+    
 
 	<body>
+		<div id="menu">
+			<nav>
+			  <ul>
+				<li><div onclick="myFunction(this.id)" id = "registerPage">register</div></li>
+				<li><a href="#photos">My Photos</a></li>
+				<li><a href="#playlist">My Playlist</a></li>
+				<li><a href="#like">Like</a></li>
+				<li><a href="#qrcoder">QR code</a></li>
+				<li><a href="#spa">Q&A</a></li>
+				<li><a href="#contact">Contact Me</a></li>
+			  </ul>
+			</nav>
+		  </div>
+		<!-- <div id="menu">
+		<nav >
+			<ul>
+			<li><div  onclick="myFunction(this.value)" value = "registerPage">register</div></li>
+			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="loginPage">login</button></li>
+			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="welcomePage">welcomePage</button></li>
+			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="aboutPage">aboutPage</button></li>
+			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="gamePage">gamePage</button></li>
+
+			</ul>
+			</nav>
+		</div> -->
+		<br>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+		<div id="gamePage">
+		
 		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
@@ -17,5 +50,60 @@
 		<div id="game">
 			<canvas id="canvas" height="600" width="600"></canvas>
 		</div>
+	</div>
+
+		<divs id="registerPage" style="display:none;background-color: aqua;">
+			<h1> register</h1>
+			
+		</div>
+
+		<div id="loginPage" style="display:none;">
+			<h1> loginPage</h1>
+		</div>
+
+		<div id="welcomePage" style="display:none;">
+			<h1> welcomePage</h1>
+		</div>
+
+		<div id="aboutPage" style="display:none;">
+			<h1> aboutPageScreen</h1>
+		</div>
+
+
+
+		
+		<script>
+		function myFunction(val) {
+			alert(val)
+			var mainScreen = document.getElementById(val);
+
+			var gamePageScreen = document.getElementById("gamePage");
+			var loginPageScreen = document.getElementById("loginPage");
+			var registerPageScreen =  document.getElementById("registerPage");
+			var welcomePageScreen =document.getElementById("welcomePage");
+			var aboutPageScreen = document.getElementById("aboutPage");
+
+			gamePageScreen.style.display="none";
+			loginPageScreen.style.display="none";
+			registerPageScreen.style.display="none";
+			welcomePageScreen.style.display="none";
+			aboutPageScreen.style.display="none";
+
+			mainScreen.style.display="block";
+
+//    var mainFrameOne = document.getElementById("gamePage"); 
+//    var mainFrameTwo = document.getElementById("registerPage");
+//    var mainFramethree = document.getElementById("loginPage");
+
+//    mainFrameOne.style.display = (
+//        mainFrameOne.style.display == "none" ? "block" : "none"); 
+//    mainFrameTwo.style.display = (
+//        mainFrameTwo.style.display == "none" ? "block" : "none"); 
+
+}
+
+
+	</script>
+		
 	</body>
 </html>
