@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
-		<link rel="stylesheet" type="text/css" href="Style.css" />
+  <head>
+    <script src="./jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+    <link rel="stylesheet" type="text/css" href="Style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-
-	</head>
-    
-
-	<body>
-		<div id="menu">
-			<nav>
-			  <ul>
-				<li><div onclick="myFunction(this.id)" id = "registerPage">register</div></li>
-				<li><a href="#photos">My Photos</a></li>
-				<li><a href="#playlist">My Playlist</a></li>
-				<li><a href="#like">Like</a></li>
-				<li><a href="#qrcoder">QR code</a></li>
-				<li><a href="#spa">Q&A</a></li>
-				<li><a href="#contact">Contact Me</a></li>
-			  </ul>
-			</nav>
-		  </div>
-		<!-- <div id="menu">
+  <body>
+    <div id="menu">
+      <nav>
+        <ul>
+          <li>
+            <div onclick="myFunction(this.id)" id="registerPage">register</div>
+          </li>
+          <li><div onclick="myFunction(this.id)" id="loginPage">login</div></li>
+          <li>
+            <div onclick="myFunction(this.id)" id="welcomePage">welcome</div>
+          </li>
+          <li><div onclick="myFunction(this.id)" id="aboutPage">about</div></li>
+          <li><div onclick="myFunction(this.id)" id="gamePage">game</div></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- <div id="menu">
 		<nav >
 			<ul>
 			<li><div  onclick="myFunction(this.value)" value = "registerPage">register</div></li>
@@ -35,75 +39,132 @@
 			</ul>
 			</nav>
 		</div> -->
-		<br>
-		<br><br><br><br><br><br><br><br><br><br><br><br>
-		<div id="gamePage">
+    <br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div id="gamePage1" style="display: none">
+      <div id="score">
+        <label for="lblScore">SCORE:</label>
+        <input id="lblScore" type="text" />
+      </div>
+      <div id="time">
+        <label for="lblTime">TIME:</label>
+        <input id="lblTime" type="text" />
+      </div>
+      <div id="game">
+        <canvas id="canvas" height="600" width="600"></canvas>
+      </div>
+    </div>
+
+    <div id="registerPage1" style="display: none; background-color: aqua">
+      <h1>register</h1>
+
+      <from id="register_form">
+        <label for="userName"><b>User Name</b></label>
+        <input type="text" id="userNameForm" name="" size="15" /> <br />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          id="psw"
+          required
+        /><br />
+
+        <label for="userName"><b>Full Name</b></label>
+        <input type="text" name="fullName" size="15" /> <br />
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" name="fullName" size="15" /> <br />
+
+        <label for="Bday">Birth date:</label>
+
+        <input
+          type="date"
+          id="start"
+          name="trip-start"
+          value="2018-07-22"
+          min="1990-01-01"
+          max="2022-12-31"
+        />
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
+
+        <button type="submit" class="registerbtn">register</button>
+      </from>
+      <script type="text/javascript">
+            $(function() {
+        $("#userNameForm").focusout(function(){
+        	alert("aaaa");
+                  check_fname();
+               });
+			   
+         function check_fname() {
+        	 alert("something");
+        	var pattern = /^[a-zA-Z]*$/;
+                  var fname = $("#form_fname").val();
+      </script>
+    </div>
+
+    <div id="loginPage1" style="display: none; background-color: aqua">
+      <h1>loginPage -</h1>
+
+      <label for="userName"><b>User Name</b></label>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        name="email"
+        id="email"
+        required
+      />
+
+      <label for="psw"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="psw"
+        id="psw"
+        required
+      />
+      <button type="submit" class="login">login</button>
+      <!--TODO: לבדוק אם קיים וכו -->
+    </div>
+
+    <div id="welcomePage1">
+      <h1>welcomePage - need logo</h1>
+      <button value="registerPage" onclick="myFunction(this.value)">
+        register
+      </button>
+      <button value="loginPage" onclick="myFunction(this.value)">login</button>
+    </div>
+
+    <div id="aboutPage1" style="display: none">
+      <h1>aboutPageScreen</h1>
+    </div>
+
+
+
 		
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
-	</div>
+    <script>
+      function myFunction(val) {
+        val += "1";
 
-		<divs id="registerPage" style="display:none;background-color: aqua;">
-			<h1> register</h1>
-			
-		</div>
+        var mainScreen = document.getElementById(val);
 
-		<div id="loginPage" style="display:none;">
-			<h1> loginPage</h1>
-		</div>
+        var gamePageScreen = document.getElementById("gamePage1");
+        var loginPageScreen = document.getElementById("loginPage1");
+        var registerPageScreen = document.getElementById("registerPage1");
+        var welcomePageScreen = document.getElementById("welcomePage1");
+        var aboutPageScreen = document.getElementById("aboutPage1");
 
-		<div id="welcomePage" style="display:none;">
-			<h1> welcomePage</h1>
-		</div>
+        gamePageScreen.style.display = "none";
+        loginPageScreen.style.display = "none";
+        registerPageScreen.style.display = "none";
+        welcomePageScreen.style.display = "none";
+        aboutPageScreen.style.display = "none";
 
-		<div id="aboutPage" style="display:none;">
-			<h1> aboutPageScreen</h1>
-		</div>
-
-
-
-		
-		<script>
-		function myFunction(val) {
-			alert(val)
-			var mainScreen = document.getElementById(val);
-
-			var gamePageScreen = document.getElementById("gamePage");
-			var loginPageScreen = document.getElementById("loginPage");
-			var registerPageScreen =  document.getElementById("registerPage");
-			var welcomePageScreen =document.getElementById("welcomePage");
-			var aboutPageScreen = document.getElementById("aboutPage");
-
-			gamePageScreen.style.display="none";
-			loginPageScreen.style.display="none";
-			registerPageScreen.style.display="none";
-			welcomePageScreen.style.display="none";
-			aboutPageScreen.style.display="none";
-
-			mainScreen.style.display="block";
-
-//    var mainFrameOne = document.getElementById("gamePage"); 
-//    var mainFrameTwo = document.getElementById("registerPage");
-//    var mainFramethree = document.getElementById("loginPage");
-
-//    mainFrameOne.style.display = (
-//        mainFrameOne.style.display == "none" ? "block" : "none"); 
-//    mainFrameTwo.style.display = (
-//        mainFrameTwo.style.display == "none" ? "block" : "none"); 
-
-}
-
-
-	</script>
-		
-	</body>
+        mainScreen.style.display = "block";
+      }
+    </script>
+  </body>
 </html>
+		
