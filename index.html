@@ -9,6 +9,7 @@
     crossorigin="anonymous"></script>
   <script src="register.js"></script>
   <script src="login.js"></script>
+  <script src="general.js"></script>
 
 
 </head>
@@ -18,19 +19,20 @@
     <nav>
       <ul>
         <li>
-          <div onclick="myFunction(this.id)" id="registerPage">register</div>
+          <div onclick="changeDiv(this.id)" id="registerPage">register</div>
         </li>
         <li>
-          <div onclick="myFunction(this.id)" id="loginPage">login</div>
+          <div onclick="changeDiv(this.id)" id="loginPage">login</div>
         </li>
         <li>
-          <div onclick="myFunction(this.id)" id="welcomePage">welcome</div>
+          <div onclick="changeDiv(this.id)" id="welcomePage">welcome</div>
         </li>
         <li>
-          <div onclick="myFunction(this.id)" id="aboutPage">about</div>
+          <div onclick="changeDiv(this.id)" id="settingPage">about</div>
         </li>
         <li>
-          <div onclick="myFunction(this.id)" id="gamePage">game</div>
+          <div onclick="changeDiv
+          (this.id)" id="gamePage">game</div>
 
 
 
@@ -38,18 +40,6 @@
       </ul>
     </nav>
   </div>
-  <!-- <div id="menu">
-		<nav >
-			<ul>
-			<li><div  onclick="myFunction(this.value)" value = "registerPage">register</div></li>
-			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="loginPage">login</button></li>
-			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="welcomePage">welcomePage</button></li>
-			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="aboutPage">aboutPage</button></li>
-			<li><button class ="menuButton"  onclick="myFunction(this.value)" value="gamePage">gamePage</button></li>
-
-			</ul>
-			</nav>
-		</div> -->
   <br />
   <br /><br /><br /><br /><br /><br /><br /><br />
   <div id="gamePage1" style="display: none">
@@ -105,47 +95,25 @@
     <h1>loginPage -</h1>
 
     <label for="userName"><b>User Name</b></label>
-    <input type="text" placeholder="Enter Email" name="" id="userLogin" required />
+    <input type="text" placeholder="User Name" name="" id="userLogin" required />
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="passwordLogin" required />
+    <input type="password" placeholder=" Password" name="password" id="passwordLogin" required />
     <button type="submit" onclick="checkLogin()" class="login">login</button>
-    <!--TODO: לבדוק אם קיים וכו -->
+   
   </div>
 
   <div id="welcomePage1">
     <h1>welcomePage - need logo</h1>
-    <button value="registerPage" onclick="myFunction(this.value)">
+    <button value="registerPage" onclick="changeDiv(this.value)">
       register
     </button>
-    <button value="loginPage" onclick="myFunction(this.value)">login</button>
+    <button value="loginPage" onclick="changeDiv(this.value)">login</button>
   </div>
 
-  <div id="aboutPage1" style="display: none">
-    <h1>aboutPageScreen</h1>
-  </div>
+  
 
-  <script>
-    function myFunction(val) {
-      val += "1";
 
-      var mainScreen = document.getElementById(val);
-
-      var gamePageScreen = document.getElementById("gamePage1");
-      var loginPageScreen = document.getElementById("loginPage1");
-      var registerPageScreen = document.getElementById("registerPage1");
-      var welcomePageScreen = document.getElementById("welcomePage1");
-      var aboutPageScreen = document.getElementById("aboutPage1");
-
-      gamePageScreen.style.display = "none";
-      loginPageScreen.style.display = "none";
-      registerPageScreen.style.display = "none";
-      welcomePageScreen.style.display = "none";
-      aboutPageScreen.style.display = "none";
-
-      mainScreen.style.display = "block";
-    }
-  </script>
 </body>
 
 </html>

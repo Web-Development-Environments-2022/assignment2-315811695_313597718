@@ -40,7 +40,7 @@ $(function () {
       $("#password_error_message").html("Atleast 6 Characters and Numbers");
       $("#password_error_message").show();
       $("#form_password").css("border-bottom", "4px solid #F90A0A");
-      alert("invlaid password");
+
       error_password = true;
     } else {
       $("#password_error_message").hide();
@@ -61,4 +61,27 @@ $(function () {
       $("#form_email").css("border-bottom", "2px solid #34F458");
     }
   }
+
+  $("#register_form").submit(function () {
+    error_fname = false;
+    error_email = false;
+    error_password = false;
+
+    check_fullNameForm();
+    check_email();
+    check_password();
+
+    if (
+      error_fname === false &&
+      error_email === false &&
+      error_password === false
+    ) {
+      localStorage.setItem($("#userNameForm").val(), $("#passwordForm").val());
+      alert("Registration Successfull");
+      changeDiv("loginPage");
+    } else {
+      alert("Please Fill the form Correctly");
+    }
+  });
+  
 });
