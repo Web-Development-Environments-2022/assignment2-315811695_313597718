@@ -1,4 +1,5 @@
 $(function () {
+  
   $("#password_error_message").hide();
   $("fullName_error_message").hide();
   $("#email_error_message").hide();
@@ -62,7 +63,8 @@ $(function () {
     }
   }
 
-  $("#register_form").submit(function () {
+  $("#register_form").submit(function (e) {
+    e.preventDefault();
     error_fname = false;
     error_email = false;
     error_password = false;

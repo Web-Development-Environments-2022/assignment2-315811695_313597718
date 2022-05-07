@@ -8,6 +8,6 @@ function checkLogin() {
   if (localStorage.getItem(user)== password) {
     alert("great success !");
     console.log("login success");
-    changeDiv("gamePage");
+    changeDiv("settingPage");
   } else alert("Wrong input..");
 }

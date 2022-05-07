@@ -10,7 +10,8 @@
   <script src="register.js"></script>
   <script src="login.js"></script>
   <script src="general.js"></script>
-
+  <script src="setting.js"></script>
+  <script src="game.js"></script>
 
 </head>
 
@@ -28,7 +29,7 @@
           <div onclick="changeDiv(this.id)" id="welcomePage">welcome</div>
         </li>
         <li>
-          <div onclick="changeDiv(this.id)" id="settingPage">about</div>
+          <div onclick="changeDiv(this.id)" id="settingPage">settings</div>
         </li>
         <li>
           <div onclick="changeDiv
@@ -61,27 +62,27 @@
 
     <form id="register_form">
       <div>
-      <label><b>User Name</b></label>
-      <input type="text" id="userNameForm" placeholder="Enter User Name" size="15" required />  <br />
-    </div>
+        <label><b>User Name</b></label>
+        <input type="text" id="userNameForm" placeholder="Enter User Name" size="15" required /> <br />
+      </div>
 
-    <div>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="" id="passwordForm" required /><br />
-      <span class="error_form" id="password_error_message"></span>
-    </div>
-    <div>
-      <label ><b>Full Name</b></label>
-      <input  id = "fullNameForm" placeholder="Enter Full Name" type="text" name="fullName" size="15" required /> <br />
-      <span class="error_form" id="fullName_error_message"></span>
+      <div>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="" id="passwordForm" required /><br />
+        <span class="error_form" id="password_error_message"></span>
+      </div>
+      <div>
+        <label><b>Full Name</b></label>
+        <input id="fullNameForm" placeholder="Enter Full Name" type="text" name="fullName" size="15" required /> <br />
+        <span class="error_form" id="fullName_error_message"></span>
 
-    </div>
-    <div>
-      <label  ><b>Email</b></label>
-      <input id = "emailForm" type="text" placeholder="Enter Email" size="15" required/> <br />
-      <span class="error_form" id="email_error_message"></span>
+      </div>
+      <div>
+        <label><b>Email</b></label>
+        <input id="emailForm" type="text" placeholder="Enter Email" size="15" required /> <br />
+        <span class="error_form" id="email_error_message"></span>
 
-    </div>
+      </div>
       <label for="Bday">Birth date:</label>
 
       <input type="date" id="start" name="trip-start" value="2018-07-22" min="1990-01-01" max="2022-12-31" />
@@ -100,7 +101,7 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder=" Password" name="password" id="passwordLogin" required />
     <button type="submit" onclick="checkLogin()" class="login">login</button>
-   
+
   </div>
 
   <div id="welcomePage1">
@@ -110,8 +111,89 @@
     </button>
     <button value="loginPage" onclick="changeDiv(this.value)">login</button>
   </div>
+  <div id="settingPage1" style="display: none">
+    <h1>settingPageScreen</h1>
 
-  
+
+    <form id="settingForm">
+      <h1>Set your preferences:</h1> <br><br>
+      <label> Up key: </label>
+      <input id="up_key" type="text" maxlength="1" placeholder="ArrowUp" class="inp" onkeydown="upKeyFunc(event)">
+      <br>
+      <br>
+      <label> Down key: </label>
+      <input id="Down_key" type="text" maxlength="1" placeholder="ArrowDown" class="inp" onkeydown="downKeyFunc(event)">
+      <br>
+      <br>
+      <label> Right key: </label>
+      <input id="Right_key" type="text" maxlength="1" placeholder="ArrowRight" class="inp"
+        onkeydown="rightKeyFunc(event)">
+      <br>
+      <br>
+      <label> left key: </label>
+      <input id="left_key" type="text" maxlength="1" placeholder="ArrowLeft" class="inp" onkeydown="leftKeyFunc(event)">
+      <br>
+      <br>
+      <label> Balls amount:(50-90) </label>
+      <input id="ballsAmount" type="number" min="50" max="90" value="55" class="inp">
+      <br>
+      <br>
+      <!-- <label id="threeBalls"> Choose balls color: </label><br><br> -->
+      <label> First Ball (25 points): </label>
+      <select id="small_balls_amount">
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
+        <option value="White">White</option>
+
+      </select>
+      <br> <br>
+
+      <label> Second Ball (15 points): </label>
+      <select id="medium_balls_amount">
+        <option value="White">White</option>
+        <option value="Blue">Blue</option>
+        <option value="Red">Red</option>
+        <option value="Green">Green</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
+      </select>
+      <br> <br>
+
+      <label> Third Ball (5 points): </label>
+      <select id="big_balls_amount">
+        <option value="Green">Green</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
+        <option value="White">White</option>
+      </select>
+      <br>
+      <br>
+      <label> Game Time (seconds): </label>
+      <input id="gameTime" type="number" min="60" maxlength="2" value="70" size="1" class="inp">
+      <br>
+      <br>
+      <label> Monsters Amount: </label>
+      <select id="moster_amount">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <br>
+      <br>
+      <input id="randomize" type="button" class="button" value="Random" onclick="randomsettings()" />
+      <input id="submit_settings" type="submit" class="button" value="Submit" />
+      <br>
+    </form>
+
+  </div>
+  </div>
+
 
 
 </body>
