@@ -34,11 +34,11 @@
         <li><!--ohad change-->
           <div id="#about" onclick="ShowDialog()" class="item">about</div>
         </li>
-        <li>
+        <!-- <li>
           <div onclick="changeDiv
           (this.id)" id="gamePage">game</div>
 
-        </li>
+        </li> -->
       </ul>
     </nav>
   </div>
@@ -142,35 +142,36 @@
       <!-- <label id="threeBalls"> Choose balls color: </label><br><br> -->
       <label> First Ball (25 points): </label>
       <select id="small_balls_amount">
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="Green">Green</option>
         <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
         <option value="White">White</option>
+        <option value="Green">Green</option>
+    
 
       </select>
       <br> <br>
 
       <label> Second Ball (15 points): </label>
       <select id="medium_balls_amount">
-        <option value="White">White</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-        <option value="Green">Green</option>
         <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="White">White</option>
+        <option value="Green">Green</option>
       </select>
       <br> <br>
 
       <label> Third Ball (5 points): </label>
       <select id="big_balls_amount">
-        <option value="Green">Green</option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
         <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
         <option value="White">White</option>
+        <option value="Green">Green</option>
       </select>
       <br>
       <br>
@@ -179,7 +180,7 @@
       <br>
       <br>
       <label> Monsters Amount: </label>
-      <select id="moster_amount">
+      <select id="mosterAmount">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -187,7 +188,7 @@
       </select>
       <br>
       <br>
-      <input id="randomize" type="button" class="button" value="Random" onclick="randomsettings()" />
+      <input id="random"  type="button" class="button" value="Random" onclick="randomSetting()" />
       <input id="submit_settings" type="submit" class="button" value="Submit" />
       <br>
     </form>
