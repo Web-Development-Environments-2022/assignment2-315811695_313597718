@@ -31,11 +31,12 @@
         <li>
           <div onclick="changeDiv(this.id)" id="settingPage">settings</div>
         </li>
+        <li><!--ohad change-->
+          <div id="#about" onclick="ShowDialog()" class="item">about</div>
+        </li>
         <li>
           <div onclick="changeDiv
           (this.id)" id="gamePage">game</div>
-
-
 
         </li>
       </ul>
@@ -195,6 +196,37 @@
   </div>
 
 
+  <dialog id="about1"><!--ohad change-->
+    <p textalign="center">
+      <button id="close" onclick="CloseDialog()">X</button>
+      <b>This website belongs to: Adi Marom and Ohad Miller</b>
+      <br>
+      About !!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
+      ohad and adi having fun.<br>
+      we used those and those tech and stuff.<br>
+    </p>
+  </dialog>
+  <script>
+    //ohad change
+    function ShowDialog() {
+      document.getElementById("about1").showModal();
+    }
+    function CloseDialog() {
+      document.getElementById("about1").close();
+    }
+    // close th dialog window by clicking Esc or on the 'X' or somwhere else on the screen beside the dialog
+    //https://stackoverflow.com/questions/25864259/how-to-close-the-new-html-dialog-tag-by-clicking-on-its-backdrop
+    var dialog = document.getElementById('about1');
+    dialog.addEventListener('click', function (event) {
+      var rect = dialog.getBoundingClientRect();
+      var isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height
+        && rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+      if (!isInDialog) {
+        dialog.close();
+        console.log("log...")
+      }
+    });
+  </script>
 
 </body>
 
