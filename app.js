@@ -6,6 +6,16 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+var gameOn=true;
+
+// var upKey = 38;
+// var downKey = 40;
+// var leftKey = 37;
+// var rightKey = 39;
+// var threeColors = new Array();
+// var ballsAmount = 55;
+// var gameTime = 70;
+// var monsterAmount = 1;
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
@@ -13,6 +23,7 @@ $(document).ready(function() {
 });
 
 function Start() {
+	alert(gameTime);
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
@@ -82,25 +93,36 @@ function findRandomEmptyCell(board) {
 	return [i, j];
 }
 
+
 function GetKeyPressed() {
-	if (keysDown[38]) {
+	console.log(keysDown)
+	if (keysDown[upKey]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[downKey]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[leftKey]) {
 		return 3;
 	}
-	if (keysDown[39]) {
+	if (keysDown[rightKey]) {
 		return 4;
 	}
+}
+function endGame(){
+	gameOn= false;
+
 }
 
 function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
-	lblTime.value = time_elapsed;
+	timeLeft = Math.floor(gameTime -time_elapsed);
+	lblTime.value = timeLeft;
+	if(timeLeft<= 0){
+		alert("end of time");
+		endGame();
+	}
 	for (var i = 0; i < 10; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
@@ -132,24 +154,25 @@ function Draw() {
 }
 
 function UpdatePosition() {
+	if(gameOn){
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
-	if (x == 1) {
+	if (x == 1) {// up
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
 			shape.j--;
 		}
 	}
-	if (x == 2) {
+	if (x == 2) { // down
 		if (shape.j < 9 && board[shape.i][shape.j + 1] != 4) {
 			shape.j++;
 		}
 	}
-	if (x == 3) {
+	if (x == 3) { // left
 		if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
 			shape.i--;
 		}
 	}
-	if (x == 4) {
+	if (x == 4) {//right
 		if (shape.i < 9 && board[shape.i + 1][shape.j] != 4) {
 			shape.i++;
 		}
@@ -169,4 +192,5 @@ function UpdatePosition() {
 	} else {
 		Draw();
 	}
+}
 }

@@ -31,7 +31,8 @@
         <li>
           <div onclick="changeDiv(this.id)" id="settingPage">settings</div>
         </li>
-        <li><!--ohad change-->
+        <li>
+          <!--ohad change-->
           <div id="#about" onclick="ShowDialog()" class="item">about</div>
         </li>
         <!-- <li>
@@ -148,15 +149,15 @@
         <option value="Blue">Blue</option>
         <option value="White">White</option>
         <option value="Green">Green</option>
-    
+
 
       </select>
       <br> <br>
 
       <label> Second Ball (15 points): </label>
       <select id="medium_balls_amount">
-        <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
+        <option value="Purple">Purple</option>
         <option value="Red">Red</option>
         <option value="Blue">Blue</option>
         <option value="White">White</option>
@@ -166,9 +167,10 @@
 
       <label> Third Ball (5 points): </label>
       <select id="big_balls_amount">
+        <option value="Red">Red</option>
+
         <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
-        <option value="Red">Red</option>
         <option value="Blue">Blue</option>
         <option value="White">White</option>
         <option value="Green">Green</option>
@@ -176,7 +178,7 @@
       <br>
       <br>
       <label> Game Time (seconds): </label>
-      <input id="gameTime" type="number" min="60" maxlength="2" value="70" size="1" class="inp">
+      <input id="gameTime" type="number" min="1" maxlength="2" value="70" size="1" class="inp">
       <br>
       <br>
       <label> Monsters Amount: </label>
@@ -188,7 +190,7 @@
       </select>
       <br>
       <br>
-      <input id="random"  type="button" class="button" value="Random" onclick="randomSetting()" />
+      <input id="random" type="button" class="button" value="Random" onclick="randomSetting()" />
       <input id="submit_settings" type="submit" class="button" value="Submit" />
       <br>
     </form>
@@ -197,7 +199,8 @@
   </div>
 
 
-  <dialog id="about1"><!--ohad change-->
+  <dialog id="about1">
+    <!--ohad change-->
     <p textalign="center">
       <button id="close" onclick="CloseDialog()">X</button>
       <b>This website belongs to: Adi Marom and Ohad Miller</b>
