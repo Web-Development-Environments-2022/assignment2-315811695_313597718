@@ -56,3 +56,10 @@ ul li a{
     background-color: transparent;
     border: none;
 }
+
+.dialog {/*ohad change*/
+	font-family: system-ui;  
+	background-color: #FFDFDD; 
+	color:red;
+	text-align:center
+}
