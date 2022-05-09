@@ -6,7 +6,6 @@ function checkLogin() {
   console.log(user, password, "---------------------");
 
   if (localStorage.getItem(user)== password) {
-    alert("great success !");
     console.log("login success");
     changeDiv("settingPage");
   } else alert("Wrong input..");

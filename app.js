@@ -23,7 +23,6 @@ $(document).ready(function() {
 });
 
 function Start() {
-	alert(gameTime);
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
@@ -95,7 +94,7 @@ function findRandomEmptyCell(board) {
 
 
 function GetKeyPressed() {
-	console.log(keysDown)
+	// console.log(keysDown)
 	if (keysDown[upKey]) {
 		return 1;
 	}

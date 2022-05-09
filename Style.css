@@ -57,9 +57,32 @@ ul li a{
     border: none;
 }
 
-.dialog {/*ohad change*/
-	font-family: system-ui;  
-	background-color: #FFDFDD; 
-	color:red;
-	text-align:center
+.dialog {
+	/*ohad change*/
+	font-family: system-ui;
+	background-color: #FFDFDD;
+	color: red;
+	text-align: center
+}
+
+
+/* Style the header */
+header {
+	background-color: #666;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
+	top: 0;
+}
+
+/* Style the footer */
+footer {
+	position: fixed;
+	padding: 10px 10px 0px 10px;
+	bottom: 0;
+	width: 100%;
+	/* Height of the footer*/
+	height: 40px;
+	background: grey;
 }
