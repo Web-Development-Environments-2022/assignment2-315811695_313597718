@@ -6,8 +6,14 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+var interval1;
 var gameOn;
 var ballLeft;
+var ghostList;
+var dLst = [];
+var life;
+var Images;
+var prev;
 
 // var upKey = 38;
 // var downKey = 40;
@@ -25,11 +31,21 @@ $(document).ready(function () {
 function Start() {
 	console.log("start game")
 	gameOn = true;
+	life = 5;
+	prev = 0;
+	ghostList = new Array();
 	timeLeft = gameTime
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
 	ballLeft = ballsAmount;
+
+	Images = new Array();
+	Images[0] = new Image();
+	Images[1] = new Image();
+	Images[0].src = 'packman.png';
+	Images[1].src = 'ghost.png';
+
 	var cnt = 100;// ?
 	var food_remain = 50;
 	var smallFood = Math.floor(ballsAmount * 0.6);
@@ -74,7 +90,7 @@ function Start() {
 		board[19][i] = 4;
 	}
 
-	console.log(smallFood, largeFood, bigFood);
+	// console.log(smallFood, largeFood, bigFood);
 	while (smallFood > 0 && food_remain > 0) {
 		var emptyCell = findRandomEmptyCell(board);
 		board[emptyCell[0]][emptyCell[1]] = 11; //11 -> food small
@@ -87,12 +103,25 @@ function Start() {
 		food_remain--;
 		largeFood--;
 	}
-	while ( bigFood > 0 && food_remain > 0) {
+	while (bigFood > 0 && food_remain > 0) {
 		var emptyCell = findRandomEmptyCell(board);
 		board[emptyCell[0]][emptyCell[1]] = 13; //13 -> food Big
 		food_remain--;
 		bigFood--;
 	}
+
+	//monster Amount , use distance function.
+	while (monsterAmount > 0) {
+		var emptyCell = findRandomEmptyCell(board);
+		if (distance(emptyCell[0], emptyCell[1]) > 3) {
+			board[emptyCell[0]][emptyCell[1]] = 6; // 6 -> monster!
+			let pos = [emptyCell[0], emptyCell[1]];
+			ghostList.push(pos);// new monxter add to the ghost list !
+			monsterAmount--;
+		}
+	}
+
+
 	keysDown = {};
 	addEventListener(
 		"keydown",
@@ -108,7 +137,14 @@ function Start() {
 		},
 		false
 	);
-	interval = setInterval(UpdatePosition, 250);
+	interval = setInterval(UpdatePosition, 100);
+	interval1 = setInterval(updateGhost, 800);
+}
+
+function distance(x, y) {
+	let yy = Math.abs(shape.i - x) + Math.abs(shape.j - y);
+	// console.log(yy);
+	return yy;
 }
 
 function findRandomEmptyCell(board) {
@@ -136,6 +172,7 @@ function GetKeyPressed() {
 		return 4;
 	}
 }
+
 function endGame() {
 	gameOn = false;
 	ShowDialogGameOver();
@@ -156,17 +193,8 @@ function Draw() {
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
 			if (board[i][j] == 2) { //draw pacman
-				context.beginPath();
-				context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
-				context.lineTo(center.x, center.y);
-				context.fillStyle = pac_color; //color
-				context.fill();
-				context.beginPath();
-				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
-				context.fillStyle = "black"; //color
-				context.fill();
+				context.drawImage(Images[0], center.x - 30, center.y - 30, 30, 30)
 			}
-
 			else if (board[i][j] == 11) { //draw food
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
@@ -183,12 +211,14 @@ function Draw() {
 				context.fillStyle = threeColors[2]; //color
 				context.fill();
 			}
-
 			else if (board[i][j] == 4) { // wall
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "grey"; //color
 				context.fill();
+			}
+			else if (board[i][j] == 6) { // ghost
+				context.drawImage(Images[1], center.x - 30, center.y - 30, 30, 30)
 			}
 		}
 	}
@@ -231,15 +261,93 @@ function UpdatePosition() {
 		board[shape.i][shape.j] = 2;
 		var currentTime = new Date();
 		time_elapsed = (currentTime - start_time) / 1000;
-		// if (score >= 20 && time_elapsed <= 10) {
-		// 	pac_color = "green";
-		// }	
+
+		// ghost eat the packman?
+		for (let i = 0; i < ghostList.length; i++) {
+			if (ghostList[i][0] == shape.i && ghostList[i][1] == shape.j) {
+				life--;
+				if (life == 0) {
+					console.log("game over......");
+					window.clearInterval(interval);
+					window.clearInterval(interval1);
+					window.alert("Game completed");
+				} else {
+					let pos = findRandomEmptyCell(board);
+					shape.i = pos[0];
+					shape.j = pos[1];
+				}
+			}
+		}
+		// player win the game?
 		if (ballLeft == 0) {
 			console.log("game over......");
 			window.clearInterval(interval);
+			window.clearInterval(interval1);
 			window.alert("Game completed");
 		} else {
 			Draw();
 		}
 	}
+}
+
+function calcNextStepGhost(x, y) {
+	// x,y - current location of the ghost.
+	let lstNextmove = checkMoveGhost(x, y);
+	dlst = [];
+	lstNextmove.forEach(element => {
+		let dis = distance(element[0], element[1]);
+		dlst.push([element, dis]);
+	});
+	let min = 23;
+	let indx;
+	for (let k = 0; k < dlst.length; k++) {
+		if (dlst[k][1] < min) {
+			min = dlst[k][1];
+			indx = dlst[k][0];
+		}
+	}
+	// check best move, and maybe random ..
+	return indx;
+}
+
+function checkMoveGhost(x, y) {
+	let lstghostNextmove = [];
+	if (y > 0 && board[x][y - 1] != 4 && board[x][y - 1] != 6) {
+		lstghostNextmove.push([x, y - 1]);
+	}
+	if (y < 19 && board[x][y + 1] != 4 && board[x][y + 1] != 6) {
+		lstghostNextmove.push([x, y + 1]);
+	}
+	if (shape.i > 0 && board[x - 1][y] != 4 && board[x - 1][y] != 6) {
+		lstghostNextmove.push([x - 1, y]);
+	}
+	if (shape.i < 19 && board[x + 1][y] != 4 && board[x + 1][y] != 6) {
+		lstghostNextmove.push([x + 1, y]);
+	}
+	return lstghostNextmove;
+}
+
+function updateGhost() {
+	var newlst = new Array(monsterAmount);
+	for (let k = 0; k < ghostList.length; k++) {
+		
+		let mon = ghostList[k];
+		let x = mon[0]; // x of ghost
+		let y = mon[1]; // y of ghost
+
+		let pos = calcNextStepGhost(x, y);
+		let i = pos[0]
+		let j = pos[1]
+
+		board[x][y] = prev;
+
+		prev = board[i][j];
+
+		if (prev == 2){
+			prev = 0;
+		}
+		board[i][j] = 6; // make it ghost.
+		newlst.push([i, j]);
+	}
+	ghostList = newlst;
 }
