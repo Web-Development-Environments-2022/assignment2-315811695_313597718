@@ -1,5 +1,8 @@
-
     function changeDiv(val) {
+      if (val != gamePage1){
+        gameMusic.pause();
+        console.log("stop music");
+      }
       val += "1";
 
       var mainScreen = document.getElementById(val);

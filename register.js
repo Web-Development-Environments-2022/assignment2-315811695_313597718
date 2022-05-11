@@ -85,5 +85,4 @@ $(function () {
       alert("Please Fill the form Correctly");
     }
   });
-  
 });

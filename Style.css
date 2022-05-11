@@ -41,10 +41,7 @@ ul li a{
 	color: rgb(0, 0, 0);
 	padding: 0 14px;
 	border-radius: 5;
-	display: block;
-	
-
-	
+	display: block;	
 }
   ul li :hover{
 	/* color: rgb(224, 11, 39); */

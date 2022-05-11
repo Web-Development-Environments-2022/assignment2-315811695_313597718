@@ -12,7 +12,6 @@
   <script src="general.js"></script>
   <script src="setting.js"></script>
   <script src="game.js"></script>
-
 </head>
 
 <body>
@@ -20,31 +19,21 @@
     <nav>
       <ul>
         <li>
-          <div onclick="changeDiv(this.id)" id="registerPage">register</div>
+          <div onclick="changeDiv(this.id)" id="welcomePage">Welcome</div>
         </li>
         <li>
-          <div onclick="changeDiv(this.id)" id="loginPage">login</div>
+          <div onclick="changeDiv(this.id)" id="registerPage">Register</div>
         </li>
         <li>
-          <div onclick="changeDiv(this.id)" id="welcomePage">welcome</div>
+          <div onclick="changeDiv(this.id)" id="loginPage">Login</div>
         </li>
         <li>
-          <div onclick="changeDiv(this.id)" id="settingPage">settings</div>
+          <div id="#about" onclick="ShowDialog()" class="item">About</div>
         </li>
-        <li>
-          <!--ohad change-->
-          <div id="#about" onclick="ShowDialog()" class="item">about</div>
-        </li>
-        <!-- <li>
-          <div onclick="changeDiv
-          (this.id)" id="gamePage">game</div>
-
-        </li> -->
       </ul>
     </nav>
   </div>
-  <br />
-  <br /><br /><br /><br /><br /><br /><br /><br />
+  <br /><br /><br /><br /><br /><br /><br /><br /> <br />
   <div id="gamePage1" style="display: none">
     <div id="score">
       <label for="lblScore">SCORE:</label>
@@ -54,20 +43,22 @@
       <label for="lblTime">TIME:</label>
       <input id="lblTime" type="text" />
     </div>
+    <div id="life">
+      <label for="lblLife">Life:</label>
+      <input id="lblLife" type="text" value="5" />
+    </div>
     <div id="game">
-      <canvas id="canvas" height="1230" width="1230" ></canvas>
+      <canvas id="canvas" height="1230" width="1230"></canvas>
     </div>
   </div>
 
   <div id="registerPage1" style="display: none; background-color: aqua">
-    <h1>register</h1>
-
+    <h1>Register</h1>
     <form id="register_form">
       <div>
         <label><b>User Name</b></label>
         <input type="text" id="userNameForm" placeholder="Enter User Name" size="15" required /> <br />
       </div>
-
       <div>
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="" id="passwordForm" required /><br />
@@ -77,71 +68,58 @@
         <label><b>Full Name</b></label>
         <input id="fullNameForm" placeholder="Enter Full Name" type="text" name="fullName" size="15" required /> <br />
         <span class="error_form" id="fullName_error_message"></span>
-
       </div>
       <div>
         <label><b>Email</b></label>
         <input id="emailForm" type="text" placeholder="Enter Email" size="15" required /> <br />
         <span class="error_form" id="email_error_message"></span>
-
       </div>
       <label for="Bday">Birth date:</label>
-
       <input type="date" id="start" name="trip-start" value="2018-07-22" min="1990-01-01" max="2022-12-31" />
       <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
-
       <button type="submit" class="registerbtn">register</button>
     </form>
   </div>
 
   <div id="loginPage1" style="display: none; background-color: aqua">
-    <h1>loginPage -</h1>
-
+    <h1>Login Page</h1>
     <label for="userName"><b>User Name</b></label>
-    <input type="text" placeholder="User Name" name="" id="userLogin" required value="k"/>
-
+    <input type="text" placeholder="User Name" name="" id="userLogin" required value="k" />
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder=" Password" name="password" id="passwordLogin" required value="k"/>
-    <button type="submit" onclick="checkLogin()" class="login">login</button>
-
+    <input type="password" placeholder=" Password" name="password" id="passwordLogin" required value="k" />
+    <button type="submit" onclick="checkLogin()" class="login" style="width:100px ;height:100px;">login</button>
   </div>
 
   <div id="welcomePage1">
-    <h1>welcomePage - need logo</h1>
-    <button value="registerPage" onclick="changeDiv(this.value)">
-      register
+    <h1>Welcome Page - need logo</h1>
+    <button value="registerPage" onclick="changeDiv(this.value)" style="width:100px ;height:100px;">
+      Register
     </button>
-    <button value="loginPage" onclick="changeDiv(this.value)">login</button>
+    <button value="loginPage" onclick="changeDiv(this.value)" style="width:100px ;height:100px;">login</button>
   </div>
+
   <div id="settingPage1" style="display: none">
     <h1>settingPageScreen</h1>
-
-
     <form id="settingForm">
       <h1>Set your preferences:</h1> <br><br>
       <label> Up key: </label>
       <input id="up_key" type="text" maxlength="1" placeholder="ArrowUp" class="inp" onkeydown="upKeyFunc(event)">
-      <br>
-      <br>
+      <br><br>
       <label> Down key: </label>
       <input id="Down_key" type="text" maxlength="1" placeholder="ArrowDown" class="inp" onkeydown="downKeyFunc(event)">
-      <br>
-      <br>
+      <br><br>
       <label> Right key: </label>
       <input id="Right_key" type="text" maxlength="1" placeholder="ArrowRight" class="inp"
         onkeydown="rightKeyFunc(event)">
-      <br>
-      <br>
+      <br><br>
       <label> left key: </label>
       <input id="left_key" type="text" maxlength="1" placeholder="ArrowLeft" class="inp" onkeydown="leftKeyFunc(event)">
-      <br>
-      <br>
+      <br><br>
       <label> Balls amount:(50-90) </label>
-      <input id="ballsAmount" type="number" min="5" max="90" value="55" class="inp">
-      <br>
-      <br>
+      <input id="ballsAmount" type="number" min="5" max="900" value="55" class="inp">
+      <br><br>
       <!-- <label id="threeBalls"> Choose balls color: </label><br><br> -->
-      <label> First Ball (25 points): </label>
+      <label> First Ball (5 points): </label>
       <select id="small_balls_amount">
         <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
@@ -149,11 +127,8 @@
         <option value="Blue">Blue</option>
         <option value="White">White</option>
         <option value="Green">Green</option>
-
-
       </select>
       <br> <br>
-
       <label> Second Ball (15 points): </label>
       <select id="medium_balls_amount">
         <option value="Pink">Pink</option>
@@ -164,23 +139,19 @@
         <option value="Green">Green</option>
       </select>
       <br> <br>
-
-      <label> Third Ball (5 points): </label>
+      <label> Third Ball (25 points): </label>
       <select id="big_balls_amount">
         <option value="Red">Red</option>
-
         <option value="Purple">Purple</option>
         <option value="Pink">Pink</option>
         <option value="Blue">Blue</option>
         <option value="White">White</option>
         <option value="Green">Green</option>
       </select>
-      <br>
-      <br>
-      <label> Game Time (seconds): </label>
+      <br><br>
+      <label>Game Time (seconds):</label>
       <input id="gameTime" type="number" min="10" maxlength="2" value="60" size="1" class="inp">
-      <br>
-      <br>
+      <br><br>
       <label> Monsters Amount: </label>
       <select id="mosterAmount">
         <option value="1">1</option>
@@ -188,19 +159,15 @@
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <br>
-      <br>
-      <input id="random" type="button" class="button" value="Random" onclick="randomSetting()" />
-      <input id="submit_settings" type="submit" class="button" value="Submit" />
+      <br><br>
+      <input id="random" type="button" class="button" value="Random" onclick="randomSetting()"
+        style="width:100px ;height:100px;" />
+      <input id="submit_settings" type="submit" class="button" value="Submit" style="width:100px ;height:100px;" />
       <br>
     </form>
-
   </div>
-  </div>
-
 
   <dialog id="about1">
-    <!--ohad change-->
     <p textalign="center">
       <button id="close" onclick="CloseDialog()">X</button>
       <b>This website belongs to: Adi Marom and Ohad Miller</b>
@@ -210,58 +177,14 @@
       we used those and those tech and stuff.<br>
     </p>
   </dialog>
-  <script>
-    //ohad change
-    function ShowDialog() {
-      document.getElementById("about1").showModal();
-    }
-    function CloseDialog() {
-      document.getElementById("about1").close();
-    }
-    // close th dialog window by clicking Esc or on the 'X' or somwhere else on the screen beside the dialog
-    //https://stackoverflow.com/questions/25864259/how-to-close-the-new-html-dialog-tag-by-clicking-on-its-backdrop
-    var dialog = document.getElementById('about1');
-    dialog.addEventListener('click', function (event) {
-      var rect = dialog.getBoundingClientRect();
-      var isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height
-        && rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
-      if (!isInDialog) {
-        dialog.close();
-        console.log("close dialog about")
-      }
-    });
-  </script>
+
   <dialog id="gameover1">
-    <!--ohad change2-->
     <p textalign="center">
       <button id="close" onclick="CloseDialogGameOver()">X</button>
-      <p> ohad try this one please????</p>
-      <button onclick="Start();CloseDialogGameOver();"> start over!</button><!--start over if the game is done.-->
+    <p>Game over, Try again!</p>
+    <button onclick="Start(); CloseDialogGameOver();">Start Over!</button>
+    <!--start over if the game is done.-->
   </dialog>
-    <script>
-      //ohad change2
-      function ShowDialogGameOver() {
-        // dialog modal when the game is over - no more life or time=0
-        document.getElementById("gameover1").showModal();
-      }
-      function CloseDialogGameOver() {
-        document.getElementById("gameover1").close();
-      }
-      // close the dialog window by clicking Esc or on the 'X' or somwhere else on the screen beside the dialog
-      //https://stackoverflow.com/questions/25864259/how-to-close-the-new-html-dialog-tag-by-clicking-on-its-backdrop
-      var dialog = document.getElementById('gameover1');
-      dialog.addEventListener('click', function (event) {
-        var rect = dialog.getBoundingClientRect();
-        var isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height
-          && rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
-        if (!isInDialog) {
-          dialog.close();
-          console.log("close dialog game over")
-        }
-      });
-    </script>
-  
-
 </body>
 
 </html>
