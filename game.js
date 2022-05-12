@@ -4,8 +4,10 @@ function start() {
 
 
 // game over functios dialog.
-function ShowDialogGameOver() {
+function ShowDialogGameOver(text) {
   // dialog modal when the game is over - no more life or time=0
+  $("#gameOvertext").html(text);
+
   document.getElementById("gameover1").showModal();
 }
 function CloseDialogGameOver() {

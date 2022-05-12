@@ -51,6 +51,8 @@
       <button onclick="soundSwitch()">music off/on</button>
       <label for="lblScore">SCORE:</label>
       <input id="lblScore" type="text" />
+      <button onclick="Start();">rest</button>
+      <button onclick="changeDiv('settingPage')" >setting</button>
       <br>
       <br>
       <h1><span id ="userNameOnGame"></span></h1>
@@ -196,7 +198,7 @@
   <dialog id="gameover1">
     <p textalign="center">
       <button id="close" onclick="CloseDialogGameOver()">X</button>
-    <p>Game over, Try again!</p>
+    <span id="gameOvertext"></span>
     <button onclick="Start(); CloseDialogGameOver();">Start Over!</button>
     <!--start over if the game is done.-->
   </dialog>
