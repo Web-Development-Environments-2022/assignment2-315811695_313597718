@@ -7,7 +7,8 @@ function checkLogin() {
 
   if (localStorage.getItem(user) == password) {
     console.log("login success");
-    loggedUser=user;
+    $("#userNameOnGame").html("user name:" ,user);
+
     changeDiv("settingPage");
   } else alert("Wrong input..");
 }

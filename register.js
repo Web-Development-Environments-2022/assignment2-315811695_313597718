@@ -21,7 +21,9 @@ $(function () {
   });
 
   function check_fullNameForm() {
-    var pattern = /^[a-zA-Z]*$/;
+    // var pattern = /^[a-zA-Z]*$/;
+    var pattern = /^[a-z ,.'-]+$/
+
     var fname = $("#fullNameForm").val();
     if (!pattern.test(fname) && fname !== "") {
       $("#fullName_error_message").html("Should contain only Characters");
