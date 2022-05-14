@@ -2,18 +2,76 @@
 	margin: 0;
 	padding: 0; 
 	margin: 0 auto;
+	text-align: center;
+	font-family: Cambria;
+	font-size:  25px;
+	letter-spacing: 3px;
+	word-spacing: 10px;
+	zoom: 95%;
+	
+	
 	
 }
 body{
-    background-color:rgb(194, 192, 192) ;
+     background-color:#041C32 ; 
+	/* background-image: url(src/background.jpg);
+	background-size: 100% ;
+	background-repeat: no-repeat;  */
+}
+button, .button{
+	background-color:#064663 ;
+	width: 135px;
+	height: 40px;
+	color:white;
+	
 }
 
+
+h1{
+	color: #ECB365;
+	font-family: Cambria;
+	font-size: 45;
+}
+
+
+#loginPage1{
+	color: white;
+	display: inline-block;
+	width: 350px;
+	
+}
+#registerPage1{
+	color: white;
+	display: inline-block;
+	width: 350px;
+	
+
+}
+#settingPage1{
+	color: white;
+	width: 550px;
+	font-size:  20px;
+
+}
+#gamePage1{
+	color: white;
+}
+#infoScore,#infoLife,#infoTime{
+	padding-left: 45px;
+	display: inline-block;
+}
+#maindiv{
+	width: 85%;
+	
+	}
 #menu
 {
 	position: fixed;
 	width: 100%;
 	height: 35px;
 	background: white;
+	opacity: 80%;
+	
 	
 }
 nav{
@@ -62,6 +120,10 @@ ul li :hover{
 	text-align: center
 }
 
+.error_form{
+	color: red;
+	font-size: 15px;
+}
 
 /* Style the header */
 header {
@@ -81,5 +143,6 @@ footer {
 	width: 100%;
 	/* Height of the footer*/
 	height: 40px;
-	background: grey;
+	background: rgb(255, 255, 255);
+	opacity: 80%;
 }

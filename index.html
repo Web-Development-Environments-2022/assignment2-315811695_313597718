@@ -45,145 +45,167 @@
       </ul>
     </nav>
   </div>
-  <br /><br /><br /><br /><br /><br /><br /><br /> <br />
-  <div id="gamePage1" style="display: none">
-    <div id="score">
-      <button onclick="soundSwitch()">music off/on</button>
-      <label for="lblScore">SCORE:</label>
-      <input id="lblScore" type="text" />
-      <button onclick="Start();">rest</button>
-      <button onclick="changeDiv('settingPage')" >setting</button>
+  <br /><br /><br />
+  <div id="maindiv">
+
+    <div id="gamePage1" style="display: none">
+      
+
+        <button onclick="soundSwitch()">music off/on</button>
+        <button onclick="Start();">rest</button>
+        <button onclick="changeDiv('settingPage')">setting</button>
+        <h1><span id="userNameOnGame"> </span></h1>
+
+        <div id="infoScore">
+        <label for="lblScore">SCORE:</label>
+        <span id="lblScore" ></span>
+      </div>
+      <div id="infoTime">
+        <label for="lblTime">TIME:</label>
+        <span id="lblTime" type="text" ></span>
+      </div>
+      <div id="infoLife">
+        <label for="lblLife">Life:</label>
+        <span id="lblLife" ></span>
+      </div>
+      
+      
+      <div id="game">
+        <canvas id="canvas" height="1230" width="1230"></canvas>
+      </div>
+    </div>
+
+    <div id="registerPage1" style="display: none;">
+      <h1>Register</h1>
+      <form id="register_form">
+        <div>
+          <label><b>User Name</b></label>
+          <input type="text" id="userNameForm" placeholder="Enter User Name" size="20" required size="20" /> <br />
+        <br>
+        </div>
+        <div>
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="" id="passwordForm" required size="20"/><br />
+          <span class="error_form" id="password_error_message"></span>
+        <br>
+        </div>
+        <div>
+          <label><b>Full Name</b></label>
+          <input id="fullNameForm" placeholder="Enter Full Name" type="text" name="fullName"size="20" required />
+          <br />
+          <span class="error_form" id="fullName_error_message"></span>
+        <br>
+        </div>
+        <div>
+          <label><b>Email</b></label>
+          <input id="emailForm" type="text" placeholder="Enter Email" size="20" required /> <br />
+          <span class="error_form" id="email_error_message"></span>
+        <br>
+        </div>
+        <label for="Bday">Birth date:</label>
+        <input type="date" id="start" name="trip-start" value="2018-07-22" min="1990-01-01" max="2022-12-31" size="20" />
+        <br>
+        <br>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
+        <button type="submit" class="registerbtn">register</button>
+      </form>
+    </div>
+
+    <div id="loginPage1" style="display: none;" >
+      <h1>Login Page</h1>
+      <br>
+      <label for="userName"><b>User Name</b></label>
+      <input type="text" placeholder="User Name" name="" id="userLogin" required value="k" />
       <br>
       <br>
-      <h1><span id ="userNameOnGame"></span></h1>
-    </div>
-    <div id="time">
-      <label for="lblTime">TIME:</label>
-      <input id="lblTime" type="text" />
-    </div>
-    <div id="life">
-      <label for="lblLife">Life:</label>
-      <input id="lblLife" type="text" value="5" />
-    </div>
-    <div id="game">
-      <canvas id="canvas" height="1230" width="1230"></canvas>
-    </div>
-  </div>
+      <label for="password"><b>Password </b></label>
 
-  <div id="registerPage1" style="display: none; background-color: aqua">
-    <h1>Register</h1>
-    <form id="register_form">
-      <div>
-        <label><b>User Name</b></label>
-        <input type="text" id="userNameForm" placeholder="Enter User Name" size="15" required /> <br />
-      </div>
-      <div>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="" id="passwordForm" required /><br />
-        <span class="error_form" id="password_error_message"></span>
-      </div>
-      <div>
-        <label><b>Full Name</b></label>
-        <input id="fullNameForm" placeholder="Enter Full Name" type="text" name="fullName" size="15" required /> <br />
-        <span class="error_form" id="fullName_error_message"></span>
-      </div>
-      <div>
-        <label><b>Email</b></label>
-        <input id="emailForm" type="text" placeholder="Enter Email" size="15" required /> <br />
-        <span class="error_form" id="email_error_message"></span>
-      </div>
-      <label for="Bday">Birth date:</label>
-      <input type="date" id="start" name="trip-start" value="2018-07-22" min="1990-01-01" max="2022-12-31" />
-      <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
-      <button type="submit" class="registerbtn">register</button>
-    </form>
-  </div>
-
-  <div id="loginPage1" style="display: none; background-color: aqua">
-    <h1>Login Page</h1>
-    <label for="userName"><b>User Name</b></label>
-    <input type="text" placeholder="User Name" name="" id="userLogin" required value="k" />
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder=" Password" name="password" id="passwordLogin" required value="k" />
-    <button type="submit" onclick="checkLogin()" class="login" style="width:100px ;height:100px;">login</button>
-  </div>
-
-  <div id="welcomePage1">
-    <h1>Welcome Page - need logo</h1>
-    <button value="registerPage" onclick="changeDiv(this.value)" style="width:100px ;height:100px;">Register</button>
-    <button value="loginPage" onclick="changeDiv(this.value)" style="width:100px;height:100px;">login</button>
-
-  </div>
-
-  <div id="settingPage1" style="display: none">
-    <h1>settingPageScreen</h1>
-    <form id="settingForm">
-      <h1>Set your preferences:</h1> <br><br>
-      <label> Up key: </label>
-      <input id="up_key" type="text" maxlength="1" placeholder="ArrowUp" class="inp" onkeydown="upKeyFunc(event)">
-      <br><br>
-      <label> Down key: </label>
-      <input id="Down_key" type="text" maxlength="1" placeholder="ArrowDown" class="inp" onkeydown="downKeyFunc(event)">
-      <br><br>
-      <label> Right key: </label>
-      <input id="Right_key" type="text" maxlength="1" placeholder="ArrowRight" class="inp"
-        onkeydown="rightKeyFunc(event)">
-      <br><br>
-      <label> left key: </label>
-      <input id="left_key" type="text" maxlength="1" placeholder="ArrowLeft" class="inp" onkeydown="leftKeyFunc(event)">
-      <br><br>
-      <label> Balls amount:(50-90) </label>
-      <input id="ballsAmount" type="number" min="5" max="900" value="55" class="inp">
-      <br><br>
-      <!-- <label id="threeBalls"> Choose balls color: </label><br><br> -->
-      <label> First Ball (5 points): </label>
-      <select id="small_balls_amount">
-        <option value="Purple">Purple</option>
-        <option value="Pink">Pink</option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="White">White</option>
-        <option value="Green">Green</option>
-      </select>
-      <br> <br>
-      <label> Second Ball (15 points): </label>
-      <select id="medium_balls_amount">
-        <option value="Pink">Pink</option>
-        <option value="Purple">Purple</option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="White">White</option>
-        <option value="Green">Green</option>
-      </select>
-      <br> <br>
-      <label> Third Ball (25 points): </label>
-      <select id="big_balls_amount">
-        <option value="Red">Red</option>
-        <option value="Purple">Purple</option>
-        <option value="Pink">Pink</option>
-        <option value="Blue">Blue</option>
-        <option value="White">White</option>
-        <option value="Green">Green</option>
-      </select>
-      <br><br>
-      <label>Game Time (seconds):</label>
-      <input id="gameTime" type="number" min="10" maxlength="2" value="60" size="1" class="inp">
-      <br><br>
-      <label> Monsters Amount: </label>
-      <select id="mosterAmount">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-      <br><br>
-      <input id="random" type="button" class="button" value="Random" onclick="randomSetting()"
-        style="width:100px ;height:100px;" />
-      <input id="submit_settings" type="submit" class="button" value="Submit" style="width:100px ;height:100px;" />
+      <input type="password" placeholder=" Password" name="password" id="passwordLogin" required value="k" />
       <br>
-    </form>
-  </div>
+      <br>
+      <button type="submit" onclick="checkLogin()" class="login">login</button>
+    </div>
 
+    <div id="welcomePage1">
+      <h1>Welcome Page - need logo</h1>
+      <button value="registerPage" onclick="changeDiv(this.value)">Register</button>
+      <button value="loginPage" onclick="changeDiv(this.value)">login</button>
+
+    </div>
+
+    <div id="settingPage1" style="display: none">
+      
+      <form id="settingForm">
+        <h1>Set your preferences:</h1> <br>
+        <label> Up key: </label>
+        <input id="up_key" type="text" maxlength="1" placeholder="ArrowUp" class="inp" onkeydown="upKeyFunc(event)">
+        <br><br>
+        <label> Down key: </label>
+        <input id="Down_key" type="text" maxlength="1" placeholder="ArrowDown" class="inp"
+          onkeydown="downKeyFunc(event)">
+        <br><br>
+        <label> Right key: </label>
+        <input id="Right_key" type="text" maxlength="1" placeholder="ArrowRight" class="inp"
+          onkeydown="rightKeyFunc(event)">
+        <br><br>
+        <label> left key: </label>
+        <input id="left_key" type="text" maxlength="1" placeholder="ArrowLeft" class="inp"
+          onkeydown="leftKeyFunc(event)">
+        <br><br>
+        <label> Balls amount:(50-90) </label>
+        <input id="ballsAmount" type="number" min="5" max="900" value="55" class="inp">
+        <br><br> 
+        <!-- <label id="threeBalls"> Choose balls color: </label><br><br> -->
+        <label> First Ball (5 points): </label>
+        <select id="small_balls_amount">
+          <option value="Purple">Purple</option>
+          <option value="Pink">Pink</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="White">White</option>
+          <option value="Green">Green</option>
+        </select>
+        <br> <br> 
+        <label> Second Ball (15 points): </label>
+        <select id="medium_balls_amount">
+          <option value="Pink">Pink</option>
+          <option value="Purple">Purple</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="White">White</option>
+          <option value="Green">Green</option>
+        </select>
+        <br> <br> 
+        <label> Third Ball (25 points): </label>
+        <select id="big_balls_amount">
+          <option value="Red">Red</option>
+          <option value="Purple">Purple</option>
+          <option value="Pink">Pink</option>
+          <option value="Blue">Blue</option>
+          <option value="White">White</option>
+          <option value="Green">Green</option>
+        </select>
+        <br><br>
+        <label>Game Time (seconds):</label>
+        <input id="gameTime" type="number" min="10"  value="60" style="width: 100px;" >
+        <br><br>
+        <label> Monsters Amount: </label>
+        <select id="mosterAmount">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <br><br>
+        <input id="random" type="button" class="button" value="Random" onclick="randomSetting()" />
+        <input id="submit_settings" type="submit" class="button" value="Submit"/>
+        <br>
+      </form>
+    </div>
+  </div>
+  <footer>
+    tihs is
+  </footer>
   <dialog id="about1">
     <p textalign="center">
       <button id="close" onclick="CloseDialog()">X</button>
@@ -198,9 +220,9 @@
   <dialog id="gameover1">
     <p textalign="center">
       <button id="close" onclick="CloseDialogGameOver()">X</button>
-    <span id="gameOvertext"></span>
-    <button onclick="Start(); CloseDialogGameOver();">Start Over!</button>
-    <!--start over if the game is done.-->
+      <span id="gameOvertext"></span>
+      <button onclick="Start(); CloseDialogGameOver();">Start Over!</button>
+      <!--start over if the game is done.-->
   </dialog>
 </body>
 

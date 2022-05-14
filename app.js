@@ -35,6 +35,8 @@ var gameMusicStop = false; //to play and pause the music in the game
 
 $(document).ready(function () {
   context = canvas.getContext("2d");
+  document.body.style.zoom="80%"
+
 });
 
 function Start() {
@@ -65,12 +67,18 @@ function Start() {
   Images[2] = new Image();
   Images[3] = new Image();
   Images[4] = new Image();
+  Images[5] = new Image();
+
 
   Images[0].src = "src/packman.png";
   Images[1].src = "src/cherry.png";
-  Images[2].src = "src/clock.jpg";
+  Images[2].src = "src/clock.png";
   Images[3].src = "src/ghost.png";
   Images[4].src = "src/spcialFood.png";
+  Images[5].src= "src/wall.png";
+
+
+  
 
   //var cnt = 100;// ?
   var food_remain = ballLeft;
@@ -383,6 +391,12 @@ function Draw() {
   canvas.width = canvas.width; //clean board
   lblScore.value = score;
   timeLeft = Math.floor(keepGameTime - time_elapsed);
+  $("#lblScore").html(score+"    ");
+  $("#lblLife").html(life+"    ");
+  $("#lblTime").html(timeLeft+"    ");
+  
+ 
+
   lblTime.value = timeLeft;
   if (timeLeft <= 0) {
     console.log("end of time");
@@ -421,10 +435,11 @@ function Draw() {
         context.fill();
       } else if (board[i][j] == 4) {
         // wall
-        context.beginPath();
-        context.rect(center.x - 30, center.y - 30, 60, 60);
-        context.fillStyle = "grey"; //color
-        context.fill();
+        context.drawImage(Images[5],center.x - 30, center.y - 30, 60, 60);
+        // context.beginPath();
+        // context.rect(center.x - 30, center.y - 30, 60, 60);
+        // context.fillStyle = "grey"; //color
+        // context.fill();
       } else if (board[i][j] == 6) {
         // ghost
         context.drawImage(Images[3], center.x - 30, center.y - 30, 50, 50);
@@ -456,23 +471,27 @@ function UpdatePosition() {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
         shape.j--;
-        //Images[0].src = "src/cherry.png";-------------------------->>> todo : pacman derction
+        Images[0].src = "src/packmanUP.png";
       }
     }
     if (x == 2) {
       // down
       if (shape.j < 19 && board[shape.i][shape.j + 1] != 4) {
+        Images[0].src = "src/packmanDown.png";
         shape.j++;
       }
     }
     if (x == 3) {
       // left
       if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
+        Images[0].src = "src/packmanLeft.png";
+        
         shape.i--;
       }
     }
     if (x == 4) {
       //right
+      Images[0].src = "src/packmanRight.png";
       if (shape.i < 19 && board[shape.i + 1][shape.j] != 4) {
         shape.i++;
       }
