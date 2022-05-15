@@ -8,9 +8,6 @@
 	letter-spacing: 3px;
 	word-spacing: 10px;
 	zoom: 95%;
-	
-	
-	
 }
 body{
      background-color:#041C32 ; 
@@ -23,7 +20,6 @@ button, .button{
 	width: 135px;
 	height: 40px;
 	color:white;
-	
 }
 
 
@@ -33,18 +29,15 @@ h1{
 	font-size: 45;
 }
 
-
 #loginPage1{
 	color: white;
 	display: inline-block;
 	width: 350px;
-	
 }
 #registerPage1{
 	color: white;
 	display: inline-block;
 	width: 350px;
-	
 
 }
 #settingPage1{
@@ -54,7 +47,7 @@ h1{
 
 }
 #gamePage1{
-	color: white;
+	color: red;
 }
 #infoScore,#infoLife,#infoTime{
 	padding-left: 45px;
@@ -62,7 +55,6 @@ h1{
 }
 #maindiv{
 	width: 85%;
-	
 	}
 #menu
 {
@@ -71,8 +63,6 @@ h1{
 	height: 35px;
 	background: white;
 	opacity: 80%;
-	
-	
 }
 nav{
     position: fixed;
@@ -82,7 +72,6 @@ nav{
 }
 ul{
 	margin-left: 70px;
-	
 }
 
 ul li{
@@ -90,7 +79,6 @@ ul li{
 	display:  inline-block;
 	line-height: 70px;
 	margin: 0 5px;
-	
 }
 ul li a{
 	text-decoration: none;
@@ -105,7 +93,6 @@ ul li :hover{
 	/* color: rgb(224, 11, 39); */
 	background: #70889a;
 	transition: .5s;
-
 } 
 .menuButton{
     background-color: transparent;
@@ -113,11 +100,9 @@ ul li :hover{
 }
 
 .dialog {
-	/*ohad change*/
 	font-family: system-ui;
 	background-color: #FFDFDD;
-	color: red;
-	text-align: center
+	text-align: center;
 }
 
 .error_form{
