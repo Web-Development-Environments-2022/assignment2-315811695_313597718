@@ -2,7 +2,6 @@ function start() {
   changeDiv("gamePage");
 }
 
-
 // game over functios dialog.
 function ShowDialogGameOver(text) {
   // dialog modal when the game is over - no more life or time=0

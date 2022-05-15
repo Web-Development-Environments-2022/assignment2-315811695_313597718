@@ -1,7 +1,6 @@
     function changeDiv(val) {
       if (val != gamePage1){
         gameMusic.pause();
-        console.log("stop music");
       }
       val += "1";
 

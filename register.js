@@ -26,7 +26,7 @@ $(function () {
 
     var fname = $("#fullNameForm").val();
     if (!pattern.test(fname) && fname !== "") {
-      $("#fullName_error_message").html("Should contain only Characters");
+      $("#fullName_error_message").html("Should contain only characters");
       $("#fullName_error_message").show();
       $("#form_fname").css("border-bottom", "2px solid #F90A0A");
       error_fname = true;
@@ -40,7 +40,7 @@ $(function () {
     var patternPassword = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{6,}$/;
     var password = $("#passwordForm").val();
     if (patternPassword.test(password) == false) {
-      $("#password_error_message").html("Atleast 6 Characters and Numbers");
+      $("#password_error_message").html("Atleast 6 characters and numbers");
       $("#password_error_message").show();
       $("#form_password").css("border-bottom", "4px solid #F90A0A");
 

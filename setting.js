@@ -87,9 +87,9 @@ $(document).ready(function () {
       downKey == rightKey ||
       leftKey == rightKey
     ) {
-      alert("Cant play with same keys");
+      alert("Cant play with the same keys");
     }
     changeDiv('gamePage');
-    Start();// ohad - bug check me !
+    Start();
   });
 });

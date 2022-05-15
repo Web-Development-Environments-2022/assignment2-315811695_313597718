@@ -26,21 +26,18 @@ var gameMusic = new Audio("src/inGameSound.wav");
 var gameMusicStop = false; //to play and pause the music in the game
 
 // 0 - clean
-// 1
-//2-pacman
-//4-wall
-//6 ghost
-//11-13 food
-//50- cherry , 100 clock 60 specialFood
+// 2 - pacman
+// 4 - wall
+// 6 - ghost
+// 11-13 food
+// 50 - cherry , 100 clock 60 specialFood
 
 $(document).ready(function () {
   context = canvas.getContext("2d");
-  document.body.style.zoom="80%"
-
+  document.body.style.zoom = "80%"
 });
 
 function Start() {
-  // to fix the bug that after few times the pacman moves very fast.
   window.clearInterval(interval);
   window.clearInterval(interval1);
 
@@ -69,18 +66,13 @@ function Start() {
   Images[4] = new Image();
   Images[5] = new Image();
 
-
   Images[0].src = "src/packman.png";
   Images[1].src = "src/cherry.png";
   Images[2].src = "src/clock.png";
   Images[3].src = "src/ghost.png";
   Images[4].src = "src/spcialFood.png";
-  Images[5].src= "src/wall.png";
+  Images[5].src = "src/wall.png";
 
-
-  
-
-  //var cnt = 100;// ?
   var food_remain = ballLeft;
   smallFood = Math.floor(ballsAmount * 0.6);
   largeFood = Math.floor(ballsAmount * 0.3);
@@ -92,7 +84,6 @@ function Start() {
   for (var i = 0; i < 20; i++) {
     board[i] = new Array();
     foodMatrix[i] = new Array();
-    //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
     for (var j = 0; j < 20; j++) {
       foodMatrix[i][j] = 0;
       if (i == 0 || j == 0) {
@@ -111,7 +102,7 @@ function Start() {
           ghostList.push(pos); // new monster add to the ghost list !
           keepGhosts--;
         }
-      }
+      }//put obstacles in
       if (
         //put obstacles    (i== && j==)||
         (i == 2 && j == 2) ||
@@ -240,23 +231,11 @@ function Start() {
       ) {
         board[i][j] = 4; // 4 -> wall
       } else {
-        //var randomNum = Math.random();
-        // if (pacman_remain != 0 && randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
-        //if (pacman_remain != 0 ) { // 2-> pacman
-        // the initilize packman is in the middle: pos = [10,10]
-        // shape.i = 10;
-        // shape.j = 10;
-        // pacman_remain--;
-        // board[10][10] = 2;
-        //} else { //0 -> empty
         board[i][j] = 0;
-        //}
-        //cnt--;
       }
     }
   }
   // 2-> draw pacman
-
   while (pacman_remain == 1) {
     var emptyCell = findRandomEmptyCell(board);
     ghostList.every((element) => {
@@ -305,10 +284,9 @@ function Start() {
   }
 
   board[10][9] = 60;
-
   spcialFoodLocation = [10, 9];
   spcialFoodRemain = 1;
-  //   special food
+  // special food
   var emptyCell2 = findRandomEmptyCell(board);
   board[emptyCell2[0]][emptyCell2[1]] = 100;
   foodMatrix[emptyCell2[0]][emptyCell2[1]] = 100;
@@ -316,17 +294,6 @@ function Start() {
   var emptyCell = findRandomEmptyCell(board);
   board[emptyCell[0]][emptyCell[1]] = 50;
   foodMatrix[emptyCell[0]][emptyCell[1]] = 50;
-
-  // //monster Amount , use distance function.
-  // while (keepGhosts > 0) {
-  // 	var emptyCell = findRandomEmptyCell(board);
-  // 	if (distance(emptyCell[0], emptyCell[1]) > 3) {
-  // 		board[emptyCell[0]][emptyCell[1]] = 6; // 6 -> monster!
-  // 		let pos = [emptyCell[0], emptyCell[1]];
-  // 		ghostList.push(pos);// new monster add to the ghost list !
-  // 		keepGhosts--;
-  // 	}
-  // }
 
   keysDown = {};
   addEventListener(
@@ -350,13 +317,11 @@ function Start() {
 
 function distance(x, y) {
   let yy = Math.abs(shape.i - x) + Math.abs(shape.j - y);
-  // console.log(yy);
   return yy;
 }
 
 function generalDistance(x, y, i, j) {
   let yy = Math.abs(i - x) + Math.abs(j - y);
-  // console.log(yy);
   return yy;
 }
 
@@ -371,7 +336,6 @@ function findRandomEmptyCell(board) {
 }
 
 function GetKeyPressed() {
-  // console.log(keysDown)
   if (keysDown[upKey]) {
     return 1;
   }
@@ -391,12 +355,9 @@ function Draw() {
   canvas.width = canvas.width; //clean board
   lblScore.value = score;
   timeLeft = Math.floor(keepGameTime - time_elapsed);
-  $("#lblScore").html(score+"    ");
-  $("#lblLife").html(life+"    ");
-  $("#lblTime").html(timeLeft+"    ");
-  
- 
-
+  $("#lblScore").html(score + "    ");
+  $("#lblLife").html(life + "    ");
+  $("#lblTime").html(timeLeft + "    ");
   lblTime.value = timeLeft;
   if (timeLeft <= 0) {
     console.log("end of time");
@@ -435,11 +396,7 @@ function Draw() {
         context.fill();
       } else if (board[i][j] == 4) {
         // wall
-        context.drawImage(Images[5],center.x - 30, center.y - 30, 60, 60);
-        // context.beginPath();
-        // context.rect(center.x - 30, center.y - 30, 60, 60);
-        // context.fillStyle = "grey"; //color
-        // context.fill();
+        context.drawImage(Images[5], center.x - 30, center.y - 30, 60, 60);
       } else if (board[i][j] == 6) {
         // ghost
         context.drawImage(Images[3], center.x - 30, center.y - 30, 50, 50);
@@ -450,7 +407,7 @@ function Draw() {
         // clock - Bonus !
         context.drawImage(Images[2], center.x - 30, center.y - 30, 50, 50);
       } else if (board[i][j] == 60) {
-        // spcialfood
+        // spcial food
         context.drawImage(Images[4], center.x - 30, center.y - 30, 50, 50);
       }
     }
@@ -461,6 +418,8 @@ function endGame(text) {
   gameOn = false;
   ShowDialogGameOver(text);
   gameMusic.pause();
+  clearInterval(interval);
+  clearInterval(interval1);
 }
 
 function UpdatePosition() {
@@ -485,7 +444,7 @@ function UpdatePosition() {
       // left
       if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
         Images[0].src = "src/packmanLeft.png";
-        
+
         shape.i--;
       }
     }
@@ -526,6 +485,8 @@ function UpdatePosition() {
       //todo: add the time !
       foodMatrix[shape.i][shape.j] = 0;
       console.log("+ 20 second time bonus");
+      // timeLeft += 20;
+      // lblTime.value = timeLeft;
     }
     if (board[shape.i][shape.j] == 60) {
       foodMatrix[shape.i][shape.j] = 0;
@@ -552,7 +513,6 @@ function UpdatePosition() {
           gameMusic.currentTime = 0;
           window.clearInterval(interval);
           window.clearInterval(interval1);
-          // window.alert("game over!, You lost");
           endGame(text);
         } else {
           // game not over, strat again difrrent postion
@@ -572,7 +532,6 @@ function UpdatePosition() {
       gameMusic.currentTime = 0;
       window.clearInterval(interval);
       window.clearInterval(interval1);
-      // window.alert("winner!");
       endGame();
     } else {
       Draw();
@@ -596,7 +555,6 @@ function calcNextStepGhost(x, y) {
       indx = dlst[k][0];
     }
   }
-  // check best move, and maybe random ..
   return indx;
 }
 function randomNextStep(x, y) {
@@ -663,8 +621,6 @@ function updateGhost() {
     board[pos[0]][pos[1]] = 60;
     spcialFoodLocation = pos;
   }
-  //   compareMatrix();
-  //todo: make prevs as many as ghost number.
 }
 
 function soundSwitch() {
