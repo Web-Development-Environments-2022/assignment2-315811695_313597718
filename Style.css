@@ -47,8 +47,22 @@ h1{
 
 }
 #gamePage1{
-	color: red;
+	display: inline-block;
+	color: white;
+	display: inline-block;
+
 }
+#settingAtGame{
+	display: inline-block;
+	color: white;
+	font-size: 45px !important;
+	
+
+}
+
+/* #gameTable{
+	border: 0px solid;
+} */
 #infoScore,#infoLife,#infoTime{
 	padding-left: 45px;
 	display: inline-block;
@@ -104,6 +118,18 @@ ul li :hover{
 	background-color: #FFDFDD;
 	text-align: center;
 }
+#gameover1{
+margin-top: 50px;
+	height: fit-content;
+	width: 600px;
+}
+#about1{
+	width: 950px;
+	height: 350px;
+	opacity: 95%;
+
+}
+
 
 .error_form{
 	color: red;

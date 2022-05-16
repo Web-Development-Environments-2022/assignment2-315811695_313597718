@@ -31,6 +31,13 @@
     <nav>
       <ul>
         <li>
+          <img
+            src="
+          C:\Users\adidi\github-classroom\Web-Development-Environments-2022\assignment2-315811695_313597718\src\packmanLogo.png"
+            width="65" height="65"></img>
+        </li>
+        <li>
+        <li>
           <div onclick="changeDiv(this.id)" id="welcomePage">Welcome</div>
         </li>
         <li>
@@ -52,27 +59,92 @@
 
     <div id="gamePage1" style="display: none">
 
-      <button onclick="soundSwitch()">Music</button>
-      <button onclick="Start();">Reset</button>
-      <button onclick="changeDiv('settingPage')">Setting</button>
-      <h1><span id="userNameOnGame"> </span></h1>
 
-      <div id="infoScore">
-        <label for="lblScore">SCORE:</label>
-        <span id="lblScore"></span>
-      </div>
-      <div id="infoTime">
-        <label for="lblTime">TIME:</label>
-        <span id="lblTime" type="text"></span>
-      </div>
-      <div id="infoLife">
-        <label for="lblLife">Life:</label>
-        <span id="lblLife"></span>
-      </div>
+      <table>
 
-      <div id="game">
-        <canvas id="canvas" height="1230" width="1230"></canvas>
-      </div>
+        <td>
+          <button onclick="soundSwitch()">Music</button>
+          <button onclick="Start();">Reset</button>
+          <button onclick="changeDiv('settingPage')">Setting</button>
+          <h1><span id="userNameOnGame"> </span></h1>
+          <div id="infoScore">
+            <label for="lblScore">SCORE:</label>
+            <span id="lblScore"></span>
+          </div>
+          <div id="infoTime">
+            <label for="lblTime">TIME:</label>
+            <span id="lblTime" type="text"></span>
+          </div>
+          <div id="infoLife">
+            <label for="lblLife">Life:</label>
+            <span id="lblLife"></span>
+          </div>
+
+          <div id="game">
+            <canvas id="canvas" height="1230" width="1230"></canvas>
+          </div>
+        </td>
+        <td>
+          <span id="settingAtGame">
+            <h1> setting in game</h1>
+            <table>
+              
+              <tr>
+                <td>Up key:</td>
+                <td><label id="upKeyDisplay">ArrowUp</label> </td>
+              </tr>
+
+              <tr>
+                <td>Down key:</td>
+                <td> <label id="downKeyDisplay">ArrowDown</label></td>
+              </tr>
+
+              <tr>
+                <td>Right key:</td>
+                <td> <label id="rightKeyDisplay">ArrowLeft</label></td>
+              </tr>
+
+              <tr>
+                <td>Left key:</td>
+                <td> <label id="leftKeyDisplay">ArrowRight</label></td>
+              </tr>
+
+              <tr>
+                <td>Balls amount:</td>
+                <td> <label id="ballsAmountDisplay"></label</td>
+              </tr>
+
+              <tr>
+                <td>Ball color:</td>
+                <td> <label id="ballsc1tDisplay"></label</td>
+              </tr>
+
+              <tr>
+                <td>Ball color:</td>
+                <td> <label id="ballsc2tDisplay"></label</td>
+              </tr>
+
+              <tr>
+                <td>Ball color:</td>
+                <td> <label id="ballsc3tDisplay"></label</td>
+
+              </tr>
+
+              <tr>
+                <td>Original game Time</td>
+                <td> <label id="timeDisplay"></label</td>
+              </tr>
+
+              <tr>
+                <td>Monsters </td>
+                <td> <label id="monstertDisplay"></label</td>
+              </tr>
+
+
+            </table>
+          </span>
+        </td>
+      </table>
     </div>
 
     <div id="registerPage1" style="display: none;">
@@ -127,8 +199,13 @@
       <button type="submit" onclick="checkLogin()" class="login">login</button>
     </div>
 
-    <div id="welcomePage1">
-      <h1>Welcome Page - need logo</h1>
+    <div id="welcomePage1" style="margin-top: 150px;">
+      <h1>Welcome To Pacman</h1>
+      <img
+        src="
+    C:\Users\adidi\github-classroom\Web-Development-Environments-2022\assignment2-315811695_313597718\src\packmanLogo.png"
+        width="350" height="350"></img>
+      <br><br><br>
       <button value="registerPage" onclick="changeDiv(this.value)">Register</button>
       <button value="loginPage" onclick="changeDiv(this.value)">login</button>
 
@@ -202,31 +279,45 @@
         <input id="submit_settings" type="submit" class="button" value="Submit" />
         <br>
       </form>
+
     </div>
 
   </div>
 
   <dialog id="about1">
+
+    <button id="close" onclick="CloseDialog()" style="height: 40px;
+      width: 25px; margin-right: 90%;">X</button>
+    <br>
     <p textalign="center">
-      <button id="close" onclick="CloseDialog()">X</button>
-      <b>This website belongs to: Adi Marom and Ohad Miller</b>
+      <b>This website belongs to Adi Marom and Ohad Miller</b>
       <br>
-      About !!!!!!!!!!!!!!!!!!!!!!!!!!!<br>
-      ohad and adi having fun.<br>
-      we used those and those tech and stuff.<br>
+      We used jQuery to validate the register form inputs.
+      <br>
+      We had difficulty transferring variables and data between the Javascript and the HTML pages <br>
+      and also design all the components as we want to.
+
     </p>
   </dialog>
 
   <dialog id="gameover1">
-    <p textalign="center">
-      <button id="close" onclick="CloseDialogGameOver()">X</button>
-      <span id="gameOvertext"></span>
-      <button onclick="Start(); CloseDialogGameOver();">Start Over!</button><br>
-      <!--start over if the game is done.-->
+
+    <button id="close" onclick="CloseDialogGameOver()" style="height: 40px;
+      width: 25px; margin-right: 90%;">X</button><br><br>
+    <p textalign="center"></p>
+    <span id="gameOvertext"></span>
+    <br><br>
+    <button onclick="Start(); CloseDialogGameOver();" style="height: 40px;
+      width: 200px;">Start Over!</button><br>
+    <!--start over if the game is done.-->
   </dialog>
   <footer>
-    Contact us on:
-    <a href="mailto:ohadmil@post.bgu.ac.il">Ohad Miller</a>, <a href="mailto:adimaro@post.bgu.ac.il">Adi Marom</a>
+    <div style="text-align: top;">
+      Contact us on:
+
+      <a href="mailto:ohadmil@post.bgu.ac.il">Ohad Miller</a>,
+      <a href="mailto:adimaro@post.bgu.ac.il">Adi Marom</a>
+    </div>
   </footer>
 
 </body>

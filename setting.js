@@ -9,15 +9,19 @@ var monsterAmount = 1;
 
 function upKeyFunc(event) {
   upKey = event.keyCode;
+  $("#upKeyDisplay").text(event.key)
 }
 function downKeyFunc(event) {
   downKey = event.keyCode;
+  $("#downKeyDisplay").text(event.key)
 }
 function leftKeyFunc(event) {
   leftKey = event.keyCode;
+  $("#leftKeyDisplay").text(event.key)
 }
 function rightKeyFunc(event) {
   rightKey = event.keyCode;
+  $("#rightKeyDisplay").text(event.key)
 }
 function getRandomArbitrary(min, max) {
   return Math.floor(Math.random() * (max - min) + min);

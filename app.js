@@ -38,13 +38,24 @@ $(document).ready(function () {
 });
 
 function Start() {
+  // display settings on the side (the arrow display came from the setting page)
+  $("#ballsAmountDisplay").text(ballsAmount)
+  $("#ballsc1tDisplay").text(threeColors[0])
+  $("#ballsc2tDisplay").text(threeColors[1])
+  $("#ballsc3tDisplay").text(threeColors[2])
+  $("#timeDisplay").text(gameTime)
+  $("#monstertDisplay").text(monsterAmount)
+
+
+
+  
   window.clearInterval(interval);
   window.clearInterval(interval1);
 
   gameMusic.currentTime = 0;
   //   gameMusic.play(); -----------------------------------------------------------> todo: change
 
-  keepGameTime = gameTime;
+  keepGameTime = parseInt(gameTime);
   gameOn = true;
   life = 5;
   lblLife.value = life;
@@ -484,6 +495,7 @@ function UpdatePosition() {
       // time bonus
       //todo: add the time !
       foodMatrix[shape.i][shape.j] = 0;
+      keepGameTime+=parseInt(15);
       console.log("+ 20 second time bonus");
       // timeLeft += 20;
       // lblTime.value = timeLeft;

@@ -1,5 +1,6 @@
 function start() {
   changeDiv("gamePage");
+ 
 }
 
 // game over functios dialog.
