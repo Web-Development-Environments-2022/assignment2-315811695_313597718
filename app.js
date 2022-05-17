@@ -46,14 +46,11 @@ function Start() {
   $("#timeDisplay").text(gameTime)
   $("#monstertDisplay").text(monsterAmount)
 
-
-
-  
   window.clearInterval(interval);
   window.clearInterval(interval1);
 
   gameMusic.currentTime = 0;
-  gameMusic.play(); 
+  gameMusic.play();
 
   keepGameTime = parseInt(gameTime);
   gameOn = true;
@@ -77,12 +74,23 @@ function Start() {
   Images[4] = new Image();
   Images[5] = new Image();
 
+  Images[6] = new Image();
+  Images[7] = new Image();
+  Images[8] = new Image();
+  Images[9] = new Image();
+
   Images[0].src = "src/packman.png";
   Images[1].src = "src/cherry.png";
   Images[2].src = "src/clock.png";
   Images[3].src = "src/ghost.png";
   Images[4].src = "src/spcialFood.png";
   Images[5].src = "src/wall.png";
+  
+  Images[6].src = "src/packmanUP.png";
+  Images[7].src = "src/packmanDown.png";
+  Images[8].src = "src/packmanRight.png";
+  Images[9].src = "src/packmanLeft.png";
+
 
   var food_remain = ballLeft;
   smallFood = Math.floor(ballsAmount * 0.6);
@@ -310,7 +318,7 @@ function Start() {
   addEventListener(
     "keydown",
     function (e) {
-      if(e.keyCode==37||e.keyCode==38||e.keyCode==39||e.keyCode==40){
+      if (e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 39 || e.keyCode == 40) {
         e.preventDefault();
       }
       keysDown[e.keyCode] = true;
@@ -320,7 +328,7 @@ function Start() {
   addEventListener(
     "keyup",
     function (e) {
-      if(e.keyCode==37||e.keyCode==38||e.keyCode==39||e.keyCode==40){
+      if (e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 39 || e.keyCode == 40) {
         e.preventDefault();
       }
       keysDown[e.keyCode] = false;
@@ -329,7 +337,7 @@ function Start() {
   );
 
   interval = setInterval(UpdatePosition, 100);
-  interval1 = setInterval(updateGhost, 1000);
+  interval1 = setInterval(updateGhost, 800);
 }
 
 function distance(x, y) {
@@ -377,11 +385,11 @@ function Draw() {
   $("#lblTime").html(timeLeft + "    ");
   lblTime.value = timeLeft;
   if (timeLeft <= 0) {
-    console.log("end of time");
+    console.log("End of time");
     if (score < 100) {
-      text = "you are better then  " + score + " points";
+      text = "You are better then  " + score + " points";
     } else {
-      text = "winner";
+      text = "Winner";
     }
     endGame(text);
   }
@@ -439,6 +447,11 @@ function endGame(text) {
   clearInterval(interval1);
 }
 
+// Images[6].src = "src/packmanUP.png";
+// Images[7].src = "src/packmanDown.png";
+// Images[8].src = "src/packmanRight.png";
+// Images[9].src = "src/packmanLeft.png";
+
 function UpdatePosition() {
   if (gameOn) {
     board[shape.i][shape.j] = 0;
@@ -446,36 +459,36 @@ function UpdatePosition() {
     if (x == 1) {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
+        // Images[0].src = "src/packmanUP.png";// ohad
+        Images[0] = Images[6];
         shape.j--;
-        Images[0] = new Image();
-        Images[0].src = "src/packmanUP.png";
       }
     }
     if (x == 2) {
       // down
       if (shape.j < 19 && board[shape.i][shape.j + 1] != 4) {
-        Images[0] = new Image();
-        Images[0].src = "src/packmanDown.png";
+        // Images[0].src = "src/packmanDown.png";// ohad
+        Images[0] = Images[7];
         shape.j++;
       }
     }
     if (x == 3) {
       // left
       if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
-        Images[0] = new Image();
-        Images[0].src = "src/packmanLeft.png";
-
+        // Images[0].src = "src/packmanLeft.png";// ohad
+        Images[0] = Images[9];
         shape.i--;
       }
     }
     if (x == 4) {
       //right
-      Images[0] = new Image();
-      Images[0].src = "src/packmanRight.png";
       if (shape.i < 19 && board[shape.i + 1][shape.j] != 4) {
-        shape.i++;
+        // Images[0].src = "src/packmanRight.png";// ohad
+        Images[0] = Images[8];
+        shape.i++; 
       }
     }
+
     if (board[shape.i][shape.j] == 11) {
       score += 5;
       ballLeft--;
@@ -502,16 +515,18 @@ function UpdatePosition() {
       console.log("+1 life");
     }
     if (board[shape.i][shape.j] == 50) {
-  
+      // time bonus
       foodMatrix[shape.i][shape.j] = 0;
-      keepGameTime+=parseInt(15);
+      keepGameTime += parseInt(15);
       console.log("+ 15 second time bonus");
 
     }
     if (board[shape.i][shape.j] == 60) {
+      // score bonus
       foodMatrix[shape.i][shape.j] = 0;
       score += 50;
       spcialFoodRemain = 0;
+      console.log("+ 50 score bonus");
     }
 
     var currentTime = new Date();
