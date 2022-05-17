@@ -447,12 +447,14 @@ function UpdatePosition() {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
         shape.j--;
+        Images[0] = new Image();
         Images[0].src = "src/packmanUP.png";
       }
     }
     if (x == 2) {
       // down
       if (shape.j < 19 && board[shape.i][shape.j + 1] != 4) {
+        Images[0] = new Image();
         Images[0].src = "src/packmanDown.png";
         shape.j++;
       }
@@ -460,6 +462,7 @@ function UpdatePosition() {
     if (x == 3) {
       // left
       if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
+        Images[0] = new Image();
         Images[0].src = "src/packmanLeft.png";
 
         shape.i--;
@@ -467,6 +470,7 @@ function UpdatePosition() {
     }
     if (x == 4) {
       //right
+      Images[0] = new Image();
       Images[0].src = "src/packmanRight.png";
       if (shape.i < 19 && board[shape.i + 1][shape.j] != 4) {
         shape.i++;
