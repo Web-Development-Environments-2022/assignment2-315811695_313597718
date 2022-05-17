@@ -90,6 +90,7 @@ function Start() {
   Images[7].src = "src/packmanDown.png";
   Images[8].src = "src/packmanRight.png";
   Images[9].src = "src/packmanLeft.png";
+  
   var food_remain = ballLeft;
   smallFood = Math.floor(ballsAmount * 0.6);
   largeFood = Math.floor(ballsAmount * 0.3);
@@ -401,8 +402,8 @@ function Draw() {
       var center = new Object();
       center.x = i * 60 + 30;
       center.y = j * 60 + 30;
-      if (board[i][j] == 2) {
-        //draw pacman
+      if (board[i][j] == 2) {// pac-man
+        //draw pacman // bug here ohad adi
         context.drawImage(Images[0], center.x - 30, center.y - 30, 40, 40);
       } else if (board[i][j] == 11) {
         //draw food
@@ -457,7 +458,9 @@ function UpdatePosition() {
     if (x == 1) {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
-        // Images[0].src = "src/packmanUP.png";// ohad
+        console.log("befoer:",Images[0] );
+        console.log("after:",Images[6] );
+        //Images[0].src = "src/packmanUP.png";// ohad
         Images[0] = Images[6];
         shape.j--;
       }
@@ -466,6 +469,8 @@ function UpdatePosition() {
       // down
       if (shape.j < 19 && board[shape.i][shape.j + 1] != 4) {
         // Images[0].src = "src/packmanDown.png";// ohad
+        console.log("befoer:",Images[0] );
+        console.log("after:",Images[7] );
         Images[0] = Images[7];
         shape.j++;
       }
@@ -561,7 +566,7 @@ function UpdatePosition() {
     }
     console.log("balls:", amount);
     // player win the game? ?amount?
-    if (amount == 0) {//ballLeft == 0 || actualFoodAmout == 0) {
+    if (amount == 0) {// ballLeft == 0 ) {
       Draw();
       console.log("Winner !!");
       gameMusic.pause();
