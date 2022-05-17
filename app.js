@@ -458,11 +458,10 @@ function UpdatePosition() {
     if (x == 1) {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
-        console.log("befoer:",Images[0] );
-        console.log("after(up):",Images[6] );
+
         //Images[0].src = "src/packmanUp.png";// ohad
         
-        Images[0] = Images[6];
+        Images[0] = Images[7];
         shape.j--;
       }
     }
@@ -470,8 +469,7 @@ function UpdatePosition() {
       // down
       if (shape.j < 19 && board[shape.i][shape.j + 1] != 4) {
         // Images[0].src = "src/packmanDown.png";// ohad
-        console.log("befoer:",Images[0] );
-        console.log("after(down):",Images[7] );
+
         Images[0] = Images[7];
         shape.j++;
       }
