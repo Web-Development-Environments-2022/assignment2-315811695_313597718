@@ -404,7 +404,11 @@ function Draw() {
       center.y = j * 60 + 30;
       if (board[i][j] == 2) {// pac-man
         //draw pacman // bug here ohad adi
-        context.drawImage(Images[0], center.x - 30, center.y - 30, 40, 40);
+        console.log("Images[0]: ",Images[0]);
+        var try1 = Images[0];
+        console.log("try1: ", try1);
+        context.drawImage(try1, center.x - 30, center.y - 30, 40, 40);
+        console.log("here....");
       } else if (board[i][j] == 11) {
         //draw food
         context.beginPath();
@@ -455,13 +459,13 @@ function UpdatePosition() {
   if (gameOn) {
     board[shape.i][shape.j] = 0;
     var x = GetKeyPressed();
-    console.log(x);
     if (x == 1) {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
         console.log("befoer:",Images[0] );
         console.log("after(up):",Images[6] );
         //Images[0].src = "src/packmanUp.png";// ohad
+        
         Images[0] = Images[6];
         shape.j--;
       }
