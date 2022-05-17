@@ -461,7 +461,7 @@ function UpdatePosition() {
 
         //Images[0].src = "src/packmanUp.png";// ohad
         
-        Images[0] = Images[7];
+        Images[0] = Images[6];
         shape.j--;
       }
     }
