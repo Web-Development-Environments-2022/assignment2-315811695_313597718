@@ -80,7 +80,7 @@ function Start() {
   Images[8] = new Image();
   Images[9] = new Image();
 
-  Images[0].src = "src/packman.png";
+  Images[0].src = "src/packmanLeft.png";
   Images[1].src = "src/cherry.png";
   Images[2].src = "src/clock.png";
   Images[3].src = "src/ghost.png";
@@ -455,12 +455,13 @@ function UpdatePosition() {
   if (gameOn) {
     board[shape.i][shape.j] = 0;
     var x = GetKeyPressed();
+    console.log(x);
     if (x == 1) {
       // up
       if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
         console.log("befoer:",Images[0] );
-        console.log("after:",Images[6] );
-        //Images[0].src = "src/packmanUP.png";// ohad
+        console.log("after(up):",Images[6] );
+        //Images[0].src = "src/packmanUp.png";// ohad
         Images[0] = Images[6];
         shape.j--;
       }
@@ -470,7 +471,7 @@ function UpdatePosition() {
       if (shape.j < 19 && board[shape.i][shape.j + 1] != 4) {
         // Images[0].src = "src/packmanDown.png";// ohad
         console.log("befoer:",Images[0] );
-        console.log("after:",Images[7] );
+        console.log("after(down):",Images[7] );
         Images[0] = Images[7];
         shape.j++;
       }
@@ -564,7 +565,7 @@ function UpdatePosition() {
         }
       }
     }
-    console.log("balls:", amount);
+    //console.log("balls:", amount);
     // player win the game? ?amount?
     if (amount == 0) {// ballLeft == 0 ) {
       Draw();
