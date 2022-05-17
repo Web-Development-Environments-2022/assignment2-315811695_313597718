@@ -53,7 +53,7 @@ function Start() {
   window.clearInterval(interval1);
 
   gameMusic.currentTime = 0;
-  //   gameMusic.play(); -----------------------------------------------------------> todo: change
+  gameMusic.play(); 
 
   keepGameTime = parseInt(gameTime);
   gameOn = true;
@@ -310,6 +310,9 @@ function Start() {
   addEventListener(
     "keydown",
     function (e) {
+      if(e.keyCode==37||e.keyCode==38||e.keyCode==39||e.keyCode==40){
+        e.preventDefault();
+      }
       keysDown[e.keyCode] = true;
     },
     false
@@ -317,6 +320,9 @@ function Start() {
   addEventListener(
     "keyup",
     function (e) {
+      if(e.keyCode==37||e.keyCode==38||e.keyCode==39||e.keyCode==40){
+        e.preventDefault();
+      }
       keysDown[e.keyCode] = false;
     },
     false
@@ -492,13 +498,11 @@ function UpdatePosition() {
       console.log("+1 life");
     }
     if (board[shape.i][shape.j] == 50) {
-      // time bonus
-      //todo: add the time !
+  
       foodMatrix[shape.i][shape.j] = 0;
       keepGameTime+=parseInt(15);
-      console.log("+ 20 second time bonus");
-      // timeLeft += 20;
-      // lblTime.value = timeLeft;
+      console.log("+ 15 second time bonus");
+
     }
     if (board[shape.i][shape.j] == 60) {
       foodMatrix[shape.i][shape.j] = 0;
@@ -544,7 +548,8 @@ function UpdatePosition() {
       gameMusic.currentTime = 0;
       window.clearInterval(interval);
       window.clearInterval(interval1);
-      endGame();
+      let text = "Winner! your are the best!!!";
+      endGame(text);
     } else {
       Draw();
     }
@@ -616,7 +621,6 @@ function updateGhost() {
       i = pos[0];
       j = pos[1];
     } catch (error) {
-      console.log("This ghost can't move, check next ghost");
       i = x;
       j = y;
     }

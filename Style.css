@@ -145,7 +145,9 @@ header {
 	color: white;
 	top: 0;
 }
-
+#settingForm{
+	padding-bottom: 1%;
+}
 /* Style the footer */
 footer {
 	position: fixed;
@@ -156,4 +158,5 @@ footer {
 	height: 40px;
 	background: rgb(255, 255, 255);
 	opacity: 80%;
+	
 }

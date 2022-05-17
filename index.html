@@ -61,89 +61,97 @@
 
 
       <table>
+        <tr style="vertical-align: top;">
+          <td style="vertical-align: top; padding-top: 7%;">
+            <div>
+              <button onclick="soundSwitch()">Music</button><br><br>
+              <button onclick="Start();">Reset</button><br><br>
+              <button onclick="changeDiv('settingPage')">Setting</button><br><br>
+            </div>
+          </td>
+          <td>
+            <div>
 
-        <td>
-          <button onclick="soundSwitch()">Music</button>
-          <button onclick="Start();">Reset</button>
-          <button onclick="changeDiv('settingPage')">Setting</button>
-          <h1><span id="userNameOnGame"> </span></h1>
-          <div id="infoScore">
-            <label for="lblScore">SCORE:</label>
-            <span id="lblScore"></span>
-          </div>
-          <div id="infoTime">
-            <label for="lblTime">TIME:</label>
-            <span id="lblTime" type="text"></span>
-          </div>
-          <div id="infoLife">
-            <label for="lblLife">Life:</label>
-            <span id="lblLife"></span>
-          </div>
+              <h1><span id="userNameOnGame"> </span></h1>
+              <div id="infoScore">
+                <label for="lblScore">SCORE:</label>
+                <span id="lblScore"></span>
+              </div>
+              <div id="infoTime">
+                <label for="lblTime">TIME:</label>
+                <span id="lblTime" type="text"></span>
+              </div>
+              <div id="infoLife">
+                <label for="lblLife">Life:</label>
+                <span id="lblLife"></span>
+              </div>
 
-          <div id="game">
-            <canvas id="canvas" height="1230" width="1230"></canvas>
-          </div>
-        </td>
-        <td>
-          <span id="settingAtGame">
-            <h1> setting in game</h1>
-            <table>
-              
-              <tr>
-                <td>Up key:</td>
-                <td><label id="upKeyDisplay">ArrowUp</label> </td>
-              </tr>
+              <div id="game">
+                <canvas id="canvas" height="1230" width="1230"></canvas>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span id="settingAtGame">
+              <h1> Game settings </h1>
+              <table>
 
-              <tr>
-                <td>Down key:</td>
-                <td> <label id="downKeyDisplay">ArrowDown</label></td>
-              </tr>
+                <tr>
+                  <td>Up key:</td>
+                  <td><label id="upKeyDisplay">ArrowUp</label> </td>
+                </tr>
 
-              <tr>
-                <td>Right key:</td>
-                <td> <label id="rightKeyDisplay">ArrowLeft</label></td>
-              </tr>
+                <tr>
+                  <td>Down key:</td>
+                  <td> <label id="downKeyDisplay">ArrowDown</label></td>
+                </tr>
 
-              <tr>
-                <td>Left key:</td>
-                <td> <label id="leftKeyDisplay">ArrowRight</label></td>
-              </tr>
+                <tr>
+                  <td>Right key:</td>
+                  <td> <label id="rightKeyDisplay">ArrowLeft</label></td>
+                </tr>
 
-              <tr>
-                <td>Balls amount:</td>
-                <td> <label id="ballsAmountDisplay"></label</td>
-              </tr>
+                <tr>
+                  <td>Left key:</td>
+                  <td> <label id="leftKeyDisplay">ArrowRight</label></td>
+                </tr>
 
-              <tr>
-                <td>Ball color:</td>
-                <td> <label id="ballsc1tDisplay"></label</td>
-              </tr>
+                <tr>
+                  <td>Balls amount:</td>
+                  <td> <label id="ballsAmountDisplay"></label< /td>
+                </tr>
 
-              <tr>
-                <td>Ball color:</td>
-                <td> <label id="ballsc2tDisplay"></label</td>
-              </tr>
+                <tr>
+                  <td>Ball color:</td>
+                  <td> <label id="ballsc1tDisplay"></label< /td>
+                </tr>
 
-              <tr>
-                <td>Ball color:</td>
-                <td> <label id="ballsc3tDisplay"></label</td>
+                <tr>
+                  <td>Ball color:</td>
+                  <td> <label id="ballsc2tDisplay"></label< /td>
+                </tr>
 
-              </tr>
+                <tr>
+                  <td>Ball color:</td>
+                  <td> <label id="ballsc3tDisplay"></label< /td>
 
-              <tr>
-                <td>Original game Time</td>
-                <td> <label id="timeDisplay"></label</td>
-              </tr>
+                </tr>
 
-              <tr>
-                <td>Monsters </td>
-                <td> <label id="monstertDisplay"></label</td>
-              </tr>
+                <tr>
+                  <td>Original Time</td>
+                  <td> <label id="timeDisplay"></label< /td>
+                </tr>
+
+                <tr>
+                  <td>Monsters </td>
+                  <td> <label id="monstertDisplay"></label< /td>
+                </tr>
 
 
-            </table>
-          </span>
-        </td>
+              </table>
+            </span>
+          </td>
+        </tr>
       </table>
     </div>
 
@@ -174,7 +182,7 @@
           <span class="error_form" id="email_error_message"></span>
           <br>
         </div>
-        <label for="Bday">Birth date:</label>
+        <label for="Bday">Birth date</label>
         <input type="date" id="start" name="trip-start" value="2018-07-22" min="1990-01-01" max="2022-12-31"
           size="20" />
         <br>
@@ -188,12 +196,12 @@
       <h1>Login Page</h1>
       <br>
       <label for="userName"><b>User Name</b></label>
-      <input type="text" placeholder="User Name" name="" id="userLogin" required value="k" />
+      <input type="text" placeholder="User Name" name="" id="userLogin" required  />
       <br>
       <br>
       <label for="password"><b>Password </b></label>
 
-      <input type="password" placeholder=" Password" name="password" id="passwordLogin" required value="k" />
+      <input type="password" placeholder=" Password" name="password" id="passwordLogin" required />
       <br>
       <br>
       <button type="submit" onclick="checkLogin()" class="login">login</button>
@@ -231,7 +239,7 @@
           onkeydown="leftKeyFunc(event)">
         <br><br>
         <label> Balls amount:(50-90) </label>
-        <input id="ballsAmount" type="number" min="5" max="900" value="55" class="inp">
+        <input id="ballsAmount" type="number" min="50" max="90" value="55" class="inp">
         <br><br>
         <!-- <label id="threeBalls"> Choose balls color: </label><br><br> -->
         <label> First Ball (5 points): </label>
@@ -265,7 +273,7 @@
         </select>
         <br><br>
         <label>Game Time (seconds):</label>
-        <input id="gameTime" type="number" min="10" value="60" style="width: 100px;">
+        <input id="gameTime" type="number" min="60" value="60" style="width: 100px;">
         <br><br>
         <label> Monsters Amount: </label>
         <select id="mosterAmount">
@@ -277,7 +285,8 @@
         <br><br>
         <input id="random" type="button" class="button" value="Random" onclick="randomSetting()" />
         <input id="submit_settings" type="submit" class="button" value="Submit" />
-        <br>
+        <br><br><br><br>
+
       </form>
 
     </div>
