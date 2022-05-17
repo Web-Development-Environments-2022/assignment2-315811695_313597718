@@ -86,7 +86,7 @@ function Start() {
   Images[3].src = "src/ghost.png";
   Images[4].src = "src/spcialFood.png";
   Images[5].src = "src/wall.png";
-  Images[6].src = "src/packmanUP.png";
+  Images[6].src = "src/packmanUp.png";
   Images[7].src = "src/packmanDown.png";
   Images[8].src = "src/packmanRight.png";
   Images[9].src = "src/packmanLeft.png";
@@ -404,11 +404,7 @@ function Draw() {
       center.y = j * 60 + 30;
       if (board[i][j] == 2) {// pac-man
         //draw pacman // bug here ohad adi
-        console.log("Images[0]: ",Images[0]);
-        var try1 = Images[0];
-        console.log("try1: ", try1);
-        context.drawImage(try1, center.x - 30, center.y - 30, 40, 40);
-        console.log("here....");
+        context.drawImage(Images[0], center.x - 30, center.y - 30, 40, 40);
       } else if (board[i][j] == 11) {
         //draw food
         context.beginPath();
