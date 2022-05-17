@@ -21,6 +21,7 @@ var largeFood;
 var bigFood;
 var spcialFoodLocation;
 var spcialFoodRemain;
+var amount = 0;
 // Music:
 var gameMusic = new Audio("src/inGameSound.wav");
 var gameMusicStop = false; //to play and pause the music in the game
@@ -65,6 +66,7 @@ function Start() {
   score = 0;
   ballLeft = ballsAmount;
   keepGhosts = monsterAmount;
+  amount = 0;
 
   Images = new Array();
   Images[0] = new Image();
@@ -73,7 +75,6 @@ function Start() {
   Images[3] = new Image();
   Images[4] = new Image();
   Images[5] = new Image();
-
   Images[6] = new Image();
   Images[7] = new Image();
   Images[8] = new Image();
@@ -85,18 +86,15 @@ function Start() {
   Images[3].src = "src/ghost.png";
   Images[4].src = "src/spcialFood.png";
   Images[5].src = "src/wall.png";
-  
   Images[6].src = "src/packmanUP.png";
   Images[7].src = "src/packmanDown.png";
   Images[8].src = "src/packmanRight.png";
   Images[9].src = "src/packmanLeft.png";
-
-
   var food_remain = ballLeft;
   smallFood = Math.floor(ballsAmount * 0.6);
   largeFood = Math.floor(ballsAmount * 0.3);
   bigFood = Math.floor(ballsAmount * 0.1);
-  actualFoodAmout = bigFood + largeFood + smallFood;
+
   var pacman_remain = 1;
   start_time = new Date();
 
@@ -250,7 +248,7 @@ function Start() {
       ) {
         board[i][j] = 4; // 4 -> wall
       } else {
-        board[i][j] = 0;
+        board[i][j] = 0; // 0 -> empty
       }
     }
   }
@@ -279,13 +277,14 @@ function Start() {
     board[0][i] = 4;
     board[19][i] = 4;
   }
-  console.log("food:", smallFood, largeFood, bigFood);
-  while (smallFood > 0 && food_remain > 0) {
+
+  while (bigFood > 0 && food_remain > 0) {
     var emptyCell = findRandomEmptyCell(board);
-    board[emptyCell[0]][emptyCell[1]] = 11; //11 -> food small
-    foodMatrix[emptyCell[0]][emptyCell[1]] = 11;
+    board[emptyCell[0]][emptyCell[1]] = 13; //13 -> food Big
+    foodMatrix[emptyCell[0]][emptyCell[1]] = 13;
     food_remain--;
-    smallFood--;
+    bigFood--;
+    amount++;
   }
   while (largeFood > 0 && food_remain > 0) {
     var emptyCell = findRandomEmptyCell(board);
@@ -293,14 +292,18 @@ function Start() {
     foodMatrix[emptyCell[0]][emptyCell[1]] = 12;
     food_remain--;
     largeFood--;
+    amount++;
+
   }
-  while (bigFood > 0 && food_remain > 0) {
+  while (smallFood > 0 && food_remain > 0) {
     var emptyCell = findRandomEmptyCell(board);
-    board[emptyCell[0]][emptyCell[1]] = 13; //13 -> food Big
-    foodMatrix[emptyCell[0]][emptyCell[1]] = 13;
+    board[emptyCell[0]][emptyCell[1]] = 11; //11 -> food small
+    foodMatrix[emptyCell[0]][emptyCell[1]] = 11;
     food_remain--;
-    bigFood--;
+    smallFood--;
+    amount++;
   }
+  console.log("Amount of food:", amount);
 
   board[10][9] = 60;
   spcialFoodLocation = [10, 9];
@@ -447,11 +450,6 @@ function endGame(text) {
   clearInterval(interval1);
 }
 
-// Images[6].src = "src/packmanUP.png";
-// Images[7].src = "src/packmanDown.png";
-// Images[8].src = "src/packmanRight.png";
-// Images[9].src = "src/packmanLeft.png";
-
 function UpdatePosition() {
   if (gameOn) {
     board[shape.i][shape.j] = 0;
@@ -485,7 +483,7 @@ function UpdatePosition() {
       if (shape.i < 19 && board[shape.i + 1][shape.j] != 4) {
         // Images[0].src = "src/packmanRight.png";// ohad
         Images[0] = Images[8];
-        shape.i++; 
+        shape.i++;
       }
     }
 
@@ -493,18 +491,21 @@ function UpdatePosition() {
       score += 5;
       ballLeft--;
       actualFoodAmout--;
+      amount--;
       foodMatrix[shape.i][shape.j] = 0;
     }
     if (board[shape.i][shape.j] == 12) {
       score += 15;
       ballLeft--;
       actualFoodAmout--;
+      amount--;
       foodMatrix[shape.i][shape.j] = 0;
     }
     if (board[shape.i][shape.j] == 13) {
       score += 25;
       ballLeft--;
       actualFoodAmout--;
+      amount--;
       foodMatrix[shape.i][shape.j] = 0;
     }
     if (board[shape.i][shape.j] == 100) {
@@ -519,7 +520,6 @@ function UpdatePosition() {
       foodMatrix[shape.i][shape.j] = 0;
       keepGameTime += parseInt(15);
       console.log("+ 15 second time bonus");
-
     }
     if (board[shape.i][shape.j] == 60) {
       // score bonus
@@ -559,15 +559,16 @@ function UpdatePosition() {
         }
       }
     }
-    // player win the game?
-    if (ballLeft == 0 || actualFoodAmout == 0) {
+    console.log("balls:", amount);
+    // player win the game? ?amount?
+    if (amount == 0) {//ballLeft == 0 || actualFoodAmout == 0) {
       Draw();
       console.log("Winner !!");
       gameMusic.pause();
       gameMusic.currentTime = 0;
       window.clearInterval(interval);
       window.clearInterval(interval1);
-      let text = "Winner! your are the best!!!";
+      let text = "Winner! You are the best!!!";
       endGame(text);
     } else {
       Draw();
